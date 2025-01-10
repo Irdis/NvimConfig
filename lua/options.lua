@@ -46,8 +46,11 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 
+vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
 
 vim.cmd [[
 set maxmempattern=2000000
 set wildignore=*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/dist/*
+
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 ]]
