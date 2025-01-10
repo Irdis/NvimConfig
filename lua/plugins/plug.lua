@@ -101,7 +101,7 @@ return
             vim.keymap.set('n', '<leader>ff', fzflua.files, {})
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>gg', fzflua.grep, {})
-            vim.keymap.set('n', '<leader>lg', fzflua.live_grep, {})
+            vim.keymap.set('n', '<leader>gl', fzflua.live_grep, {})
             vim.keymap.set('n', '<leader>gw', fzflua.grep_cword, {})
         end
     },
