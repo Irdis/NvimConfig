@@ -12,6 +12,7 @@ return
     { "tpope/vim-unimpaired", },
     { "tpope/vim-fugitive" },
     { "jremmen/vim-ripgrep" },
+    { "tpope/vim-dadbod" },
     { "ctrlpvim/ctrlp.vim" },
     {
         'rmagatti/auto-session',
