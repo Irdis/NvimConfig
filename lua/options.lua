@@ -38,6 +38,27 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+vim.cmd [[
+set maxmempattern=2000000
+set wildignore=*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/dist/*
+
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+]]
+--
+	-- let dotnet_errors_only = v:true
+vim.cmd [[
+	let dotnet_show_project_file = v:false
+]]
+
+vim.api.nvim_create_autocmd('BufRead', {
+    pattern = { "*.cs" },
+    callback = function()
+        vim.cmd [[
+            compiler dotnet
+        ]]
+    end
+});
+
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
@@ -48,9 +69,11 @@ vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 
 vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
 
-vim.cmd [[
-set maxmempattern=2000000
-set wildignore=*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/dist/*
+vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
+vim.keymap.set('n', '<Leader>A{', 'a<CR>{<CR><CR>}<ESC>kcc')
 
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-]]
+vim.keymap.set('n', '<F5>', ':!ctags -R --languages=c\\#<CR>')
+vim.keymap.set('n', '<Leader>ne', ':cnext<CR>')
+vim.keymap.set('n', '<Leader>pe', ':cprev<CR>')
+vim.keymap.set('n', '<Leader>se', ':copen<CR>')
+vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
