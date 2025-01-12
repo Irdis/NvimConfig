@@ -9,7 +9,6 @@ return
             vim.cmd.colorscheme("everforest")
         end,
     },
-    { "vim-test/vim-test" },
     { "tpope/vim-unimpaired", },
     { "tpope/vim-fugitive" },
     { "jremmen/vim-ripgrep" },
