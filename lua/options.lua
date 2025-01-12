@@ -77,6 +77,3 @@ vim.keymap.set('n', '<Leader>ne', ':cnext<CR>')
 vim.keymap.set('n', '<Leader>pe', ':cprev<CR>')
 vim.keymap.set('n', '<Leader>se', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
-
-vim.g['test#strategy'] = 'neovim'
-vim.g['test#dotnet#runner'] = 'dotnettest'
