@@ -50,6 +50,11 @@ vim.cmd [[
 	let dotnet_show_project_file = v:false
 ]]
 
+vim.cmd [[
+	let dotnet_show_project_file = v:false
+]]
+
+
 vim.api.nvim_create_autocmd('BufRead', {
     pattern = { "*.cs" },
     callback = function()
@@ -68,6 +73,7 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 
 vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
+vim.keymap.set("n", "<Leader>wl", ":set wrap!<CR>")
 
 vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
 vim.keymap.set('n', '<Leader>A{', 'a<CR>{<CR><CR>}<ESC>kcc')
@@ -77,3 +83,10 @@ vim.keymap.set('n', '<Leader>ne', ':cnext<CR>')
 vim.keymap.set('n', '<Leader>pe', ':cprev<CR>')
 vim.keymap.set('n', '<Leader>se', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
+
+
+vim.g.loc = "sqlserver://localhost"
+vim.keymap.set('v', '<Leader>ev', ':DB g:loc<CR>')
+vim.keymap.set('n', '<Leader>ef', function() 
+    return ':DB g:loc < ' .. vim.fn.expand("%") ..'<CR>'
+end, { expr = true })
