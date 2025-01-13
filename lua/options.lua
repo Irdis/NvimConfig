@@ -87,9 +87,11 @@ vim.keymap.set('n', '<Leader>se', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
 
 vim.g.loc = "sqlserver://localhost"
 vim.keymap.set('v', '<Leader>ev', ':DB g:loc<CR>')
 vim.keymap.set('n', '<Leader>ef', function() 
     return ':DB g:loc < ' .. vim.fn.expand("%") ..'<CR>'
 end, { expr = true })
+

@@ -115,11 +115,31 @@ return
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "mason.nvim" },
         config = function()
+            local lspconfig = require("lspconfig");
             require("mason-lspconfig").setup()
             require("mason-lspconfig").setup_handlers({
                 function (server_name)
-                    require("lspconfig")[server_name].setup({})
+                    lspconfig[server_name].setup({})
                 end,
+                ["csharp_ls"] = function()
+                    lspconfig.csharp_ls.setup({
+                        on_init = function(client)
+                            local current_path = string.lower(client.config.cmd_cwd);
+                            
+                            local htfs_location = "c:/repo/hazeltree/main/htfs";
+                            if current_path == htfs_location then
+                                client.config.settings = {
+                                    csharp = {
+                                        solution = "c:\\repo\\hazeltree\\main\\htfs\\applications.sln"
+                                    }
+                                }
+                                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                            end
+
+                            return true
+                        end,
+                    })
+                end
             })
         end,
     },
