@@ -125,9 +125,13 @@ return
                     lspconfig.csharp_ls.setup({
                         on_init = function(client)
                             local current_path = string.lower(client.config.cmd_cwd);
+                            local current_path_len = string.len(current_path)
                             
-                            local htfs_location = "c:/repo/hazeltree/main/htfs";
-                            if current_path == htfs_location then
+                            local htfs_location = "c:/repo/hazeltree/main/htfs"
+                            local htfs_location_len = string.len(htfs_location)
+
+                            if current_path_len >= htfs_location_len and 
+                                string.sub(current_path, 1, htfs_location_len) == htfs_location then
                                 client.config.settings = {
                                     csharp = {
                                         solution = "c:\\repo\\hazeltree\\main\\htfs\\applications.sln"

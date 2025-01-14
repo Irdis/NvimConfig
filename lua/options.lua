@@ -50,12 +50,10 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 	-- let dotnet_errors_only = v:true
 vim.cmd [[
 	let dotnet_show_project_file = v:false
+	let dotnet_errors_only = v:true
 ]]
 
-vim.cmd [[
-	let dotnet_show_project_file = v:false
-]]
-
+vim.keymap.set('n', '<F1>', [[:set makeprg=c:\\Repo\\hazeltree\\setup\\build.bat<CR><BAR>:set errorformat=%E%f(%l\\,%c):\ %trror\ %m,%-G%.%#<CR>]])
 
 vim.api.nvim_create_autocmd('BufRead', {
     pattern = { "*.cs" },
