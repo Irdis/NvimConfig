@@ -11,6 +11,7 @@ return
     },
     { "tpope/vim-unimpaired", },
     { "tpope/vim-fugitive" },
+    { "jremmen/vim-ripgrep" },
     { "tpope/vim-dadbod" },
     {
         'rmagatti/auto-session',
@@ -77,7 +78,7 @@ return
         "nvim-treesitter/nvim-treesitter",
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "c_sharp" },
+                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "c_sharp", "sql" },
                 auto_install = true,
                 highlight = {
                     enable = true,
