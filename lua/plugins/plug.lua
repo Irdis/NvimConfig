@@ -16,9 +16,25 @@ return
     { "tpope/vim-dadbod" },
     { 
         "Irdis/NuNvim",
+        dir = "c:\\Repo\\NuNvim",
+        dev = true,
         config = function()
-            require("nunvim").setup{}
-            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
+            local config = {};
+            local current_path = string.lower(vim.fn.getcwd())
+
+            local net46 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net462\\nunit3-console"
+            local net8 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net8.0\\nunit3-console"
+
+            local htfs = "c:\\repo\\hazeltree\\main\\htfs"
+            if current_path == htfs then
+                config.nunitconsole = net46;
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug(true)<CR>')
+            else
+                config.nunitconsole = net8;
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug(false)<CR>')
+            end
+
+            require("nunvim").setup(config)
         end
     },
     {

@@ -71,6 +71,11 @@ vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
+vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
+vim.keymap.set("n", "<Leader>co", function() 
+    require("bufferline").close_others()
+end, { noremap = true })
+
 
 vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
 vim.keymap.set("n", "<Leader>wl", ":set wrap!<CR>")
