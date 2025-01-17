@@ -36,6 +36,15 @@ return
             require("nunvim").setup(config)
         end
     },
+    { 
+        "Irdis/Startup",
+        config = function()
+            local ht = require('startup.ht')
+            require("startup").setup({
+                apps = ht
+            })
+        end
+    },
     {
         'rmagatti/auto-session',
         lazy = false,
