@@ -82,12 +82,6 @@ return
         end,
     },
     {
-        "vim-airline/vim-airline",
-        dependencies = {
-            "vim-airline/vim-airline-themes",
-        }
-    },
-    {
         "nvim-tree/nvim-tree.lua",
         config = function()
             require("nvim-tree").setup({

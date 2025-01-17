@@ -68,6 +68,7 @@ vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
+vim.keymap.set("n", "<Leader>em", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.g.loc = "sqlserver://localhost"
 vim.keymap.set('v', '<Leader>ev', ':DB g:loc<CR>')
