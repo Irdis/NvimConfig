@@ -14,6 +14,13 @@ return
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     { "tpope/vim-dadbod" },
+    { 
+        "Irdis/NuNvim",
+        config = function()
+            require("nunvim").setup{}
+            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
+        end
+    },
     {
         'rmagatti/auto-session',
         lazy = false,
@@ -126,18 +133,19 @@ return
                         on_init = function(client)
                             local current_path = string.lower(client.config.cmd_cwd);
                             local current_path_len = string.len(current_path)
-                            
+
                             local htfs_location = "c:/repo/hazeltree/main/htfs"
                             local htfs_location_len = string.len(htfs_location)
 
                             if current_path_len >= htfs_location_len and 
                                 string.sub(current_path, 1, htfs_location_len) == htfs_location then
-                                client.config.settings = {
-                                    csharp = {
-                                        solution = "c:\\repo\\hazeltree\\main\\htfs\\applications.sln"
-                                    }
-                                }
-                                client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+                                client.stop(true)
+                                -- client.config.settings = {
+                                --     csharp = {
+                                --         solution = "c:\\repo\\hazeltree\\main\\htfs\\applications.sln"
+                                --     }
+                                -- }
+                                -- client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
                             end
 
                             return true
