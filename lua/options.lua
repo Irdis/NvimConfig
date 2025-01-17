@@ -19,6 +19,7 @@ vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
+vim.opt.pumheight = 10
 
 vim.opt.colorcolumn = "120"
 
