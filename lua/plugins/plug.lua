@@ -16,22 +16,21 @@ return
     { "tpope/vim-dadbod" },
     { 
         "Irdis/NuNvim",
-        dir = "c:\\Repo\\NuNvim",
-        dev = true,
         config = function()
             local config = {};
             local current_path = string.lower(vim.fn.getcwd())
 
             local net46 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net462\\nunit3-console"
-            local net8 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net8.0\\nunit3-console"
+            local net6 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net6.0\\nunit3-console"
 
             local htfs = "c:\\repo\\hazeltree\\main\\htfs"
             if current_path == htfs then
                 config.nunitconsole = net46;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug(true)<CR>')
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             else
-                config.nunitconsole = net8;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug(false)<CR>')
+                config.nunitconsole = net6;
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
+                vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true })<CR>')
             end
 
             require("nunvim").setup(config)
@@ -48,15 +47,15 @@ return
     {
         'stevearc/oil.nvim',
         opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require("oil").setup{}
+            require("oil").setup({})
         end,
     },
     {
         'jinh0/eyeliner.nvim',
         config = function()
-            require'eyeliner'.setup {}
+            require('eyeliner').setup({})
             vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg='#4287f5', bold = true, underline = true,  })
             vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg='#42b4f5', underline = true, italic = true  })
         end
@@ -65,12 +64,12 @@ return
         "akinsho/bufferline.nvim",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
-            require("bufferline").setup {
+            require("bufferline").setup({
                 options = {
                     show_buffer_close_icons = false,
                     show_close_icon = false,
                 }
-            }
+            })
         end,
     },
     {
@@ -82,17 +81,10 @@ return
     {
         "nvim-tree/nvim-tree.lua",
         config = function()
-            require("nvim-tree").setup(
-            {
-                update_focused_file = {
-                    enable = true,
-                },
-                git = {
-                    enable = false
-                },
-                view = { 
-                    adaptive_size = true 
-                }
+            require("nvim-tree").setup({
+                update_focused_file = { enable = true },
+                git = { enable = false },
+                view = { adaptive_size = true }
             })
             local api = require('nvim-tree.api');
             vim.keymap.set('n', '<Leader>ll', api.tree.toggle, {})
@@ -115,11 +107,11 @@ return
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
         config = function()
-            require("fzf-lua").setup{
+            require("fzf-lua").setup({
                 defaults = {
                     formatter = "path.filename_first", -- places file name first
                 },
-            }
+            })
             local fzflua = require('fzf-lua')
             vim.keymap.set('n', '<leader>ff', fzflua.files, {})
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
@@ -143,30 +135,6 @@ return
             require("mason-lspconfig").setup_handlers({
                 function (server_name)
                     lspconfig[server_name].setup({})
-                end,
-                ["csharp_ls"] = function()
-                    lspconfig.csharp_ls.setup({
-                        on_init = function(client)
-                            local current_path = string.lower(client.config.cmd_cwd);
-                            local current_path_len = string.len(current_path)
-
-                            local htfs_location = "c:/repo/hazeltree/main/htfs"
-                            local htfs_location_len = string.len(htfs_location)
-
-                            if current_path_len >= htfs_location_len and 
-                                string.sub(current_path, 1, htfs_location_len) == htfs_location then
-                                client.stop(true)
-                                -- client.config.settings = {
-                                --     csharp = {
-                                --         solution = "c:\\repo\\hazeltree\\main\\htfs\\applications.sln"
-                                --     }
-                                -- }
-                                -- client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-                            end
-
-                            return true
-                        end,
-                    })
                 end
             })
         end,
@@ -183,25 +151,20 @@ return
             "hrsh7th/vim-vsnip",
         },
         config = function()
-            local cmp = require'cmp'
+            local cmp = require('cmp')
 
             cmp.setup({
                 snippet = {
-                    -- REQUIRED - you must specify a snippet engine
                     expand = function(args)
-                        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                        vim.fn["vsnip#anonymous"](args.body)
                     end,
-                },
-                window = {
-                    -- completion = cmp.config.window.bordered(),
-                    -- documentation = cmp.config.window.bordered(),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.abort(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
@@ -211,7 +174,6 @@ return
                 })
             })
 
-            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline({ '/', '?' }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
@@ -219,7 +181,6 @@ return
                 }
             })
 
-            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline(':', {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
@@ -230,11 +191,10 @@ return
                 matching = { disallow_symbol_nonprefix_matching = false }
             })
 
-            -- Set up lspconfig.
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            require('lspconfig')['ts_ls'].setup {
+            require('lspconfig')['ts_ls'].setup({
                 capabilities = capabilities
-            }
+            })
         end
     }
 }

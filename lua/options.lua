@@ -40,29 +40,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.cmd [[
-set maxmempattern=2000000
-set wildignore=*/node_modules/*,*/bin/*,*/obj/*,*/packages/*,*/dist/*
-
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-]]
---
-	-- let dotnet_errors_only = v:true
-vim.cmd [[
-	let dotnet_show_project_file = v:false
-	let dotnet_errors_only = v:true
-]]
-
-vim.keymap.set('n', '<F1>', [[:set makeprg=c:\\Repo\\hazeltree\\setup\\build.bat<CR><BAR>:set errorformat=%E%f(%l\\,%c):\ %trror\ %m,%-G%.%#<CR>]])
-
-vim.api.nvim_create_autocmd('BufRead', {
-    pattern = { "*.cs" },
-    callback = function()
-        vim.cmd [[
-            compiler dotnet
-        ]]
-    end
-});
+vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',space='␣' }
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
@@ -75,7 +53,6 @@ vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
 vim.keymap.set("n", "<Leader>co", function() 
     require("bufferline").close_others()
 end, { noremap = true })
-
 
 vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
 vim.keymap.set("n", "<Leader>wl", ":set wrap!<CR>")
@@ -98,3 +75,15 @@ vim.keymap.set('n', '<Leader>ef', function()
     return ':DB g:loc < ' .. vim.fn.expand("%") ..'<CR>'
 end, { expr = true })
 
+local current_path = string.lower(vim.fn.getcwd())
+local htfs = "c:\\repo\\hazeltree\\main\\htfs"
+if current_path == htfs then
+    vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat'
+    vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
+else
+    vim.cmd [[
+        let dotnet_show_project_file = v:false
+        let dotnet_errors_only = v:true
+        compiler dotnet
+    ]]
+end
