@@ -86,6 +86,6 @@ else
     vim.cmd [[
         let dotnet_show_project_file = v:false
         let dotnet_errors_only = v:true
-        compiler dotnet
+        compiler! dotnet
     ]]
 end
