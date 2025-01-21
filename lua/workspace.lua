@@ -25,13 +25,6 @@ elseif current_path == white then
     local build_target = 1
     local current_target = build_targets[build_target]
 
-    vim.keymap.set('n', '<Leader>ct', function()
-        build_target = math.fmod(build_target, table.getn(build_targets))  + 1
-        current_target = build_targets[build_target]
-        print(build_target .. " " .. current_target)
-        vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat' .. ' ' .. current_target
-    end, { noremap = true })
-
     vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat' .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
 else
