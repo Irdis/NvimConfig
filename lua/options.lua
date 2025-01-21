@@ -72,8 +72,6 @@ vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set("n", "<Leader>em", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.g.loc = "sqlserver://localhost"
-vim.keymap.set('v', '<Leader>ev', ':DB g:loc<CR>')
-vim.keymap.set('n', '<Leader>ef', function() 
-    return ':DB g:loc < ' .. vim.fn.expand("%") ..'<CR>'
-end, { expr = true })
+vim.keymap.set('v', '<Leader>es', ':DB g:loc<CR>')
+vim.keymap.set('n', '<Leader>es', ':%DB g:loc<CR>')
 
