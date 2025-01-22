@@ -14,13 +14,6 @@ return
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     { "tpope/vim-dadbod" },
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function()
-            require('lualine').setup({})
-        end
-    },
     { 
         "Irdis/NuNvim",
         config = function()
