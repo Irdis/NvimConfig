@@ -75,3 +75,6 @@ vim.g.loc = "sqlserver://localhost"
 vim.keymap.set('v', '<Leader>es', ':DB g:loc<CR>')
 vim.keymap.set('n', '<Leader>es', ':%DB g:loc<CR>')
 
+vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
+vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
+
