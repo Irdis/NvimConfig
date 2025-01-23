@@ -81,3 +81,14 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
+vim.keymap.set('n', '<Leader>gw', function()
+    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
+    print(cmd)
+    vim.cmd(cmd)
+end, { noremap = true })
+
+vim.keymap.set('n', '<Leader>gW', function()
+    local cmd = 'Rg "' .. vim.fn.expand('<cWORD>'):gsub('%(', '\\(') .. '"';
+    print(cmd)
+    vim.cmd(cmd)
+end, { noremap = true })

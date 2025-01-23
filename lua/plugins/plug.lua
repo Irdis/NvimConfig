@@ -115,6 +115,7 @@ return
             require("fzf-lua").setup({
                 defaults = {
                     formatter = "path.filename_first", -- places file name first
+                    path_shorten   = 1, 
                 },
             })
             local fzflua = require('fzf-lua')
@@ -122,7 +123,7 @@ return
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>gg', fzflua.grep, {})
             vim.keymap.set('n', '<leader>gl', fzflua.live_grep, {})
-            vim.keymap.set('n', '<leader>gw', fzflua.grep_cword, {})
+            -- vim.keymap.set('n', '<leader>gw', fzflua.grep_cword, {})
         end
     },
     {
