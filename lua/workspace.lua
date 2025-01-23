@@ -1,4 +1,5 @@
 local current_path = string.lower(vim.fn.getcwd())
+
 local htfs = "c:\\repo\\hazeltree\\main\\htfs"
 local white = "c:\\repo\\hazeltree\\whiteapi"
 if current_path == htfs then
@@ -16,6 +17,10 @@ if current_path == htfs then
         vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat' .. ' ' .. current_target
     end, { noremap = true })
 
+    vim.keymap.set('n', '<Leader>nr', function()
+        vim.cmd(':!"c:\\distr\\nuget.exe" restore ' .. current_target)
+    end, { noremap = true })
+
     vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat' .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
 elseif current_path == white then 
@@ -24,6 +29,11 @@ elseif current_path == white then
     }
     local build_target = 1
     local current_target = build_targets[build_target]
+
+    vim.keymap.set('n', '<Leader>nr', function()
+        vim.cmd(':!"c:\\distr\\nuget.exe" restore ' .. current_target)
+    end, { noremap = true })
+
 
     vim.opt.makeprg = 'c:\\Repo\\hazeltree\\setup\\build.bat' .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
