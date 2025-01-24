@@ -32,6 +32,8 @@ vim.api.nvim_exec('language en_US', true)
 vim.opt.signcolumn = "yes"
 vim.opt.guifont = { "Fira Code", "h12" }
 
+vim.opt.foldmethod = "syntax"
+
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
@@ -102,3 +104,17 @@ vim.keymap.set('n', '<Leader>gW', function()
     print(cmd)
     vim.cmd(cmd)
 end, { noremap = true })
+
+local timer = vim.loop.new_timer()
+local blink = function()
+    local cnt, blink_times = 0, 8
+
+    timer:start(0, 100, vim.schedule_wrap(function()
+        vim.cmd('set cursorcolumn! cursorline!')
+
+        cnt = cnt + 1
+        if cnt == blink_times then timer:stop() end
+    end))
+end
+
+vim.keymap.set('n', '<Leader>cb', blink)
