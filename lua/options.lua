@@ -97,6 +97,7 @@ vim.keymap.set('n', '<Leader>gW', function()
         :gsub('%}','\\}')
         :gsub('%"','""')
         :gsub('%/','\\/')
+        :gsub('%?','\\?')
     local cmd = 'Rg "' .. escaped .. '"';
     print(cmd)
     vim.cmd(cmd)
