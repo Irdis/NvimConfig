@@ -88,7 +88,16 @@ vim.keymap.set('n', '<Leader>gw', function()
 end, { noremap = true })
 
 vim.keymap.set('n', '<Leader>gW', function()
-    local cmd = 'Rg "' .. vim.fn.expand('<cWORD>'):gsub('%(', '\\(') .. '"';
+    local escaped = vim.fn.expand('<cWORD>')
+        :gsub('%(','\\(')
+        :gsub('%)','\\)')
+        :gsub('%[','\\[')
+        :gsub('%]','\\]')
+        :gsub('%{','\\{')
+        :gsub('%}','\\}')
+        :gsub('%"','""')
+        :gsub('%/','\\/')
+    local cmd = 'Rg "' .. escaped .. '"';
     print(cmd)
     vim.cmd(cmd)
 end, { noremap = true })
