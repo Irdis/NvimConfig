@@ -54,6 +54,7 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
 vim.keymap.set("n", "<Leader>co", function() 
+    vim.cmd("wa");
     require("bufferline").close_others()
 end, { noremap = true })
 
