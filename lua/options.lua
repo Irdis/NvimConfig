@@ -32,7 +32,7 @@ vim.api.nvim_exec('language en_US', true)
 vim.opt.signcolumn = "yes"
 vim.opt.guifont = { "Fira Code", "h12" }
 
-vim.opt.foldmethod = "syntax"
+-- vim.opt.foldmethod = "syntax"
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -119,3 +119,13 @@ local blink = function()
 end
 
 vim.keymap.set('n', '<Leader>cb', blink)
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "git",
+  callback = function()
+    local buf_name = vim.fn.expand("%")
+    if buf_name:match("^fugitive://.*/%x+$") then
+      vim.opt_local.foldmethod = "syntax"
+    end
+  end,
+})
