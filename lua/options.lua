@@ -21,7 +21,7 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.pumheight = 10
 
-vim.opt.cinoptions = "(s,m1,J1"
+vim.opt.cinoptions = "(s,m1,J1,j1"
 
 vim.opt.colorcolumn = "120"
 
