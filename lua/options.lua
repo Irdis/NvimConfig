@@ -21,6 +21,8 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.pumheight = 10
 
+vim.opt.cinoptions = "(s"
+
 vim.opt.colorcolumn = "120"
 
 -- disable netrw at the very start of your init.lua
