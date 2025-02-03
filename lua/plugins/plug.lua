@@ -24,7 +24,8 @@ return
             local net6 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net6.0\\nunit3-console"
 
             local htfs = "c:\\repo\\hazeltree\\main\\htfs"
-            if current_path == htfs then
+            local white = "c:\\repo\\hazeltree\\whiteapi"
+            if current_path == htfs or current_path == white then
                 config.nunitconsole = net46;
                 vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             else
@@ -145,22 +146,22 @@ return
             })
         end,
     },
-    -- {
-    --     'saghen/blink.cmp',
-    --     dependencies = 'rafamadriz/friendly-snippets',
-    --     version = '*',
-    --     opts = {
-    --         keymap = { preset = 'default' },
-    --
-    --         appearance = {
-    --             use_nvim_cmp_as_default = true,
-    --             nerd_font_variant = 'mono'
-    --         },
-    --
-    --         sources = {
-    --             default = { 'lsp', 'path', 'snippets', 'buffer' },
-    --         },
-    --     },
-    --     opts_extend = { "sources.default" }
-    -- }
+    {
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        opts = {
+            keymap = { preset = 'default' },
+
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+        },
+        opts_extend = { "sources.default" }
+    }
 }
