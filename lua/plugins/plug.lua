@@ -15,6 +15,22 @@ return
     { "tpope/vim-surround" },
     { "tpope/vim-dadbod" },
     { 
+        "echasnovski/mini.nvim", 
+        version = false,
+        specs = {
+            { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+        },
+        init = function()
+            package.preload["nvim-web-devicons"] = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
+        end,
+        config = function()
+            require('mini.icons').setup()
+        end
+    },
+    { 
         "Irdis/NuNvim",
         config = function()
             local config = {};
@@ -59,7 +75,6 @@ return
     {
         'stevearc/oil.nvim',
         opts = {},
-        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("oil").setup({})
         end,
@@ -74,7 +89,6 @@ return
     },
     {
         "akinsho/bufferline.nvim",
-        dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("bufferline").setup({
                 options = {
@@ -110,7 +124,7 @@ return
     },
     {
         "ibhagwan/fzf-lua",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
         config = function()
             require("fzf-lua").setup({
