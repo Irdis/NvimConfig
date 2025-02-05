@@ -86,6 +86,10 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
+vim.keymap.set('n', '<Leader>ya', ':let @+ = expand("%:p")<CR>')
+vim.keymap.set('n', '<Leader>yr', ':let @+ = expand("%")<CR>')
+vim.keymap.set('n', '<Leader>yp', ':let @+ = expand("%:h")<CR>')
+
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
     print(cmd)
@@ -107,20 +111,6 @@ vim.keymap.set('n', '<Leader>gW', function()
     print(cmd)
     vim.cmd(cmd)
 end, { noremap = true })
-
-local timer = vim.loop.new_timer()
-local blink = function()
-    local cnt, blink_times = 0, 8
-
-    timer:start(0, 100, vim.schedule_wrap(function()
-        vim.cmd('set cursorcolumn! cursorline!')
-
-        cnt = cnt + 1
-        if cnt == blink_times then timer:stop() end
-    end))
-end
-
-vim.keymap.set('n', '<Leader>cb', blink)
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "git",
