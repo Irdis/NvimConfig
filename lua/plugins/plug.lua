@@ -14,6 +14,7 @@ return
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     { "tpope/vim-dadbod" },
+    { "kamykn/spelunker.vim" },
     { 
         "echasnovski/mini.nvim", 
         version = false,
