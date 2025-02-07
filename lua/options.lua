@@ -74,7 +74,7 @@ vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set("n", "<Leader>em", vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set("n", "<Leader>sm", vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.g.loc = "sqlserver://localhost"
 vim.keymap.set('v', '<Leader>es', ':DB g:loc<CR>')
@@ -88,8 +88,9 @@ vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
 vim.keymap.set('n', '<Leader>ya', ':let @+ = expand("%:p")<CR>')
 vim.keymap.set('n', '<Leader>yr', ':let @+ = expand("%")<CR>')
-vim.keymap.set('n', '<Leader>yp', ':let @+ = expand("%:h")<CR>')
+vim.keymap.set('n', '<Leader>yp', ':let @+ = expand("%:p:h")<CR>')
 
+vim.keymap.set('n', '<Leader>gt', ':FzfLua tags<CR>')
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
     print(cmd)
@@ -126,5 +127,15 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "sql",
   callback = function()
     vim.opt_local.commentstring = "-- %s"
+  end,
+})
+
+vim.g.spelunker_disable_auto_group = 0
+vim.api.nvim_create_augroup("spelunker", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
+  group = "spelunker",
+  pattern = { "*.vim", "*.js", "*.jsx", "*.json", "*.md", "*.cs", "*.sql" },
+  callback = function()
+    vim.fn["spelunker#check"]()
   end,
 })
