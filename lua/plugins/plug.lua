@@ -1,3 +1,5 @@
+local const = require("const")
+
 return
 {
     {
@@ -41,16 +43,11 @@ return
             local config = {};
             local current_path = string.lower(vim.fn.getcwd())
 
-            local net46 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net462\\nunit3-console"
-            local net6 = "c:\\Distr\\NUnit.Console-3.19.0\\bin\\net6.0\\nunit3-console"
-
-            local htfs = "c:\\repo\\hazeltree\\main\\htfs"
-            local white = "c:\\repo\\hazeltree\\whiteapi"
-            if current_path == htfs or current_path == white then
-                config.nunitconsole = net46;
+            if current_path == const.ht_main or current_path == const.ht_white then
+                config.nunitconsole = const.nunit_net46;
                 vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             else
-                config.nunitconsole = net6;
+                config.nunitconsole = const.nunit_net6;
                 vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
                 vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true })<CR>')
             end
@@ -129,7 +126,6 @@ return
     },
     {
         "ibhagwan/fzf-lua",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {},
         config = function()
             require("fzf-lua").setup({
@@ -143,7 +139,6 @@ return
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>gg', fzflua.grep, {})
             vim.keymap.set('n', '<leader>gl', fzflua.live_grep, {})
-            -- vim.keymap.set('n', '<leader>gw', fzflua.grep_cword, {})
         end
     },
     {
