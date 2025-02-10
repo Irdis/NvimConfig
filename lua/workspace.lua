@@ -22,7 +22,7 @@ if current_path == const.ht_main then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif current_path == white then 
+elseif current_path == const.ht_white then 
     local build_targets = { 
         "WhiteApi.sln",  
     }
