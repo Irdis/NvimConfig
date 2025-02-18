@@ -90,6 +90,10 @@ vim.keymap.set('n', '<Leader>ya', ':let @+ = expand("%:p")<CR>')
 vim.keymap.set('n', '<Leader>yr', ':let @+ = expand("%")<CR>')
 vim.keymap.set('n', '<Leader>yp', ':let @+ = expand("%:p:h")<CR>')
 
+vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
+vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
+
+
 vim.keymap.set('n', '<Leader>gt', ':FzfLua tags<CR>')
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
