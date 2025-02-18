@@ -20,6 +20,10 @@ if current_path == const.ht_main then
         vim.cmd(':!"' .. const.nuget .. '" restore ' .. current_target)
     end, { noremap = true })
 
+    vim.keymap.set('n', '<Leader>nR', function()
+        vim.cmd(':!"' .. const.nuget .. '" restore -Force ' .. current_target)
+    end, { noremap = true })
+
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
 elseif current_path == const.ht_white then 
@@ -32,7 +36,9 @@ elseif current_path == const.ht_white then
     vim.keymap.set('n', '<Leader>nr', function()
         vim.cmd(':!"' .. const.nuget .. '" restore ' .. current_target)
     end, { noremap = true })
-
+    vim.keymap.set('n', '<Leader>nR', function()
+        vim.cmd(':!"' .. const.nuget .. '" restore -Force ' .. current_target)
+    end, { noremap = true })
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
