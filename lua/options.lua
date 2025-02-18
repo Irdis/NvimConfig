@@ -117,15 +117,9 @@ vim.keymap.set('n', '<Leader>gW', function()
     vim.cmd(cmd)
 end, { noremap = true })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "git",
-  callback = function()
-    local buf_name = vim.fn.expand("%")
-    if buf_name:match("^fugitive://.*/%x+$") then
+vim.keymap.set('n', '<Leader>sf', function()
       vim.opt_local.foldmethod = "syntax"
-    end
-  end,
-})
+end, { noremap = true })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "sql",
