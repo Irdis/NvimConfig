@@ -61,7 +61,7 @@ vim.keymap.set("n", "<Leader>co", function()
 end, { noremap = true })
 
 vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
-vim.keymap.set("n", "<Leader>wl", ":set wrap!<CR>")
+vim.keymap.set("n", "<Leader>lw", ":set wrap!<CR>")
 
 vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
 vim.keymap.set('n', '<Leader>A{', 'a<CR>{<CR><CR>}<ESC>kcc')
