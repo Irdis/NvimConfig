@@ -16,10 +16,6 @@ return
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     { "tpope/vim-dadbod" },
-    { 
-        "danilamihailov/beacon.nvim",
-        event = "CursorMoved",
-    },
     { "kamykn/spelunker.vim" },
     { 
         "echasnovski/mini.nvim", 
