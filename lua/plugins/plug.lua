@@ -56,6 +56,14 @@ return
         end
     },
     { 
+        "Irdis/NoogleNvim",
+        -- dir = "C:\\Projects\\NoogleNvim\\",
+        -- dev = true,
+        config = function()
+            require("noogle").setup({})
+        end
+    },
+    { 
         "Irdis/Startup",
         -- dir = "c:\\Repo\\hazeltree\\startup\\",
         -- dev = true,
