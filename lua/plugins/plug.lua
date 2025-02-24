@@ -57,6 +57,17 @@ return
         -- dev = true,
         config = function()
             require("noogle").setup({})
+
+            vim.keymap.set('n', '<Leader>nt', function()
+                local cmd = 'Noogle -t ' .. vim.fn.expand('<cword>');
+                print(cmd)
+                vim.cmd(cmd)
+            end, { noremap = true })
+            vim.keymap.set('n', '<Leader>nm', function()
+                local cmd = 'Noogle -m ' .. vim.fn.expand('<cword>');
+                print(cmd)
+                vim.cmd(cmd)
+            end, { noremap = true })
         end
     },
     { 
