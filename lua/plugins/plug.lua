@@ -63,8 +63,18 @@ return
                 print(cmd)
                 vim.cmd(cmd)
             end, { noremap = true })
+            vim.keymap.set('n', '<Leader>nT', function()
+                local cmd = 'Noogle -i -a -t ' .. vim.fn.expand('<cword>');
+                print(cmd)
+                vim.cmd(cmd)
+            end, { noremap = true })
             vim.keymap.set('n', '<Leader>nm', function()
                 local cmd = 'Noogle -m ' .. vim.fn.expand('<cword>');
+                print(cmd)
+                vim.cmd(cmd)
+            end, { noremap = true })
+            vim.keymap.set('n', '<Leader>nM', function()
+                local cmd = 'Noogle -i -a -m ' .. vim.fn.expand('<cword>');
                 print(cmd)
                 vim.cmd(cmd)
             end, { noremap = true })
