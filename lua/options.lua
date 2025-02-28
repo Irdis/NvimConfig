@@ -94,10 +94,21 @@ vim.keymap.set('n', '<Leader>yw', ':let @+ = getcwd()<CR>')
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
 
+vim.keymap.set('n', '<Leader>is', ':set filetype=sql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
 
-vim.keymap.set('n', '<Leader>gt', ':FzfLua tags<CR>')
+local grep_targets = { "", "-tcs" }
+local grep_target = 1
+
+vim.keymap.set('n', '<Leader>gt',function()
+    grep_target = math.fmod(grep_target, table.getn(grep_targets)) + 1
+    print(grep_target .. " " .. grep_targets[grep_target])
+end, { noremap = true})
+
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
+    if grep_target ~= 1 then
+        cmd = cmd .. " ".. grep_targets[grep_target]
+    end
     print(cmd)
     vim.cmd(cmd)
 end, { noremap = true })
@@ -113,6 +124,9 @@ vim.keymap.set('n', '<Leader>gW', function()
         :gsub('%"','""')
         :gsub('%/','\\/')
         :gsub('%?','\\?')
+    if grep_target ~= 1 then
+        cmd = cmd .. " ".. grep_targets[grep_target]
+    end
     local cmd = 'Rg "' .. escaped .. '"';
     print(cmd)
     vim.cmd(cmd)
