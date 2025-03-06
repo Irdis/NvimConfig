@@ -18,6 +18,18 @@ return
     { "tpope/vim-dadbod" },
     { "kamykn/spelunker.vim" },
     { 
+        "xiyaowong/transparent.nvim",
+        config = function()
+            vim.cmd("TransparentEnable")
+        end
+    },
+    { 
+        "lukas-reineke/virt-column.nvim",
+        config = function()
+            require("virt-column").setup()
+        end
+    },
+    { 
         "echasnovski/mini.nvim", 
         version = false,
         specs = {
