@@ -15,7 +15,7 @@ return
     { "tpope/vim-fugitive" },
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
-    { "tpope/vim-dadbod" },
+    { "Irdis/vim-dadbod" },
     { "kamykn/spelunker.vim" },
     { 
         "lukas-reineke/virt-column.nvim",
@@ -154,6 +154,38 @@ return
                 },
             })
         end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["aa"] = "@parameter.outer",
+                            ["ia"] = "@parameter.inner",
+                        },
+                        selection_modes = {
+                            ['@function.outer'] = 'V', 
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ["<leader>sa"] = "@parameter.inner",
+                        },
+                        swap_previous = {
+                            ["<leader>Sa"] = "@parameter.inner",
+                        },
+                    },
+                },
+            })
+        end
     },
     {
         "ibhagwan/fzf-lua",
