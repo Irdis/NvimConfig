@@ -178,9 +178,11 @@ return
                         enable = true,
                         swap_next = {
                             ["<leader>sa"] = "@parameter.inner",
+                            ["<leader>sf"] = "@function.outer",
                         },
                         swap_previous = {
                             ["<leader>Sa"] = "@parameter.inner",
+                            ["<leader>Sf"] = "@function.outer",
                         },
                     },
                 },
