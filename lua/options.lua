@@ -21,7 +21,16 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.pumheight = 10
 
-vim.opt.cinoptions = "(s,m1,J1,j1"
+-- vim.opt.binary = true
+vim.opt.eol = false
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "cs",
+    callback = function()
+        vim.opt_local.cindent = true
+        vim.opt_local.cinoptions = "(s,m1,J1,j1"
+    end,
+})
 
 vim.opt.colorcolumn = "120"
 
