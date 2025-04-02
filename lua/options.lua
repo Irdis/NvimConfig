@@ -21,7 +21,6 @@ vim.opt.relativenumber = true
 vim.opt.termguicolors = true
 vim.opt.pumheight = 10
 
--- vim.opt.binary = true
 vim.opt.eol = false
 
 vim.api.nvim_create_autocmd("FileType", {
