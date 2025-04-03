@@ -68,16 +68,11 @@ vim.keymap.set("n", "<Leader>co", function()
     require("bufferline").close_others()
 end, { noremap = true })
 
-vim.keymap.set("n", "<Leader>sw", ":set list!<CR>")
-vim.keymap.set("n", "<Leader>lw", ":set wrap!<CR>")
-
 vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
 vim.keymap.set('n', '<Leader>A{', 'a<CR>{<CR><CR>}<ESC>kcc')
 
-vim.keymap.set('n', '<F5>', ':!ctags -R --languages=c\\#<CR>')
-vim.keymap.set('n', '<Leader>ne', ':cnext<CR>')
-vim.keymap.set('n', '<Leader>pe', ':cprev<CR>')
-vim.keymap.set('n', '<Leader>se', ':copen<CR>')
+vim.keymap.set('n', '<F2>', ':!ctags -R --languages=c\\#<CR>')
+vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
