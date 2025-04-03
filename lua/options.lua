@@ -57,8 +57,6 @@ vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',spac
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
@@ -161,3 +159,7 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
+
+
+vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
+vim.diagnostic.config({ virtual_text = true })
