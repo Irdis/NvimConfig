@@ -88,8 +88,8 @@ return
     },
     { 
         "Irdis/Startup",
-        -- dir = "c:\\Repo\\hazeltree\\startup\\",
-        -- dev = true,
+        dir = "c:\\Repo\\hazeltree\\startup\\",
+        dev = true,
         config = function()
             local ht = require('startup.ht')
             require("startup").setup({
@@ -111,7 +111,7 @@ return
         config = function()
             require("oil").setup({
                 keymaps = {
-                    ['yp'] = {
+                    ['<Leader>yp'] = {
                         desc = 'Copy filepath to system clipboard',
                         callback = function ()
                             require('oil.actions').copy_entry_path.callback()
