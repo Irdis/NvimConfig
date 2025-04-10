@@ -83,11 +83,6 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
-vim.keymap.set('n', '<Leader>ya', ':let @+ = expand("%:p")<CR>')
-vim.keymap.set('n', '<Leader>yr', ':let @+ = expand("%")<CR>')
-vim.keymap.set('n', '<Leader>yp', ':let @+ = expand("%:p:h")<CR>')
-vim.keymap.set('n', '<Leader>yw', ':let @+ = getcwd()<CR>')
-
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
 
