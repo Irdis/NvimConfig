@@ -66,9 +66,6 @@ vim.keymap.set("n", "<Leader>co", function()
     require("bufferline").close_others()
 end, { noremap = true })
 
-vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
-vim.keymap.set('n', '<Leader>A{', 'a<CR>{<CR><CR>}<ESC>kcc')
-
 vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
@@ -145,14 +142,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(arg)
-      local lang = nil
       if arg.match == 'typescript' then
-          lang =  'typescript'
-      elseif arg.match == 'csharp' then
-          lang =  'c\\#'
-      end
-      if lang ~= nil then
-          vim.keymap.set('n', '<F2>', ':!ctags -R --languages=' .. lang .. '<CR>')
+          vim.keymap.set('n', '<F2>', ':!ctags -R --languages=typescript<CR>')
+          vim.keymap.set('n', '<Leader>a{', 'a {<CR><CR>}<ESC>kcc')
+          vim.keymap.set('n', '<Leader>A{', 'A {<CR><CR>}<ESC>kcc')
+      else
+          vim.keymap.set('n', '<F2>', ':!ctags -R --languages=c\\#<CR>')
+          vim.keymap.set('n', '<Leader>a{', 'a<CR>{<CR><CR>}<ESC>kcc')
+          vim.keymap.set('n', '<Leader>A{', 'A<CR>{<CR><CR>}<ESC>kcc')
       end
   end,
 })
