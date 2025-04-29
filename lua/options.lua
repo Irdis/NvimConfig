@@ -55,6 +55,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',space='␣' }
 
+vim.keymap.set('n', '<Space>', ':noh<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
@@ -162,7 +163,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
   end,
 })
 
--- vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
+vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
 --
 -- vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
 -- vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
