@@ -16,6 +16,7 @@ vim.opt.shiftwidth = 4
 vim.opt.swapfile = false
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
+vim.opt.infercase = true
 vim.opt.incsearch = true
 vim.opt.relativenumber = true
 vim.opt.termguicolors = true
