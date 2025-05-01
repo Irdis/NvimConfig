@@ -165,9 +165,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
 })
 
 vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
---
--- vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
--- vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
+
 local match_id = nil
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
 vim.keymap.set('n', '<Leader>ew',function()
