@@ -168,6 +168,16 @@ vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
 --
 -- vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
 -- vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
+local match_id = nil
+vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
+vim.keymap.set('n', '<Leader>ew',function()
+    if match_id == nil then
+        match_id = vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
+    else 
+        vim.fn.matchdelete(match_id)
+        match_id = nil;
+    end
+end, { noremap = true})
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
