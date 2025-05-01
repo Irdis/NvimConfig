@@ -17,14 +17,14 @@ return
     { "tpope/vim-surround" },
     { "Irdis/vim-dadbod" },
     { "kamykn/spelunker.vim" },
-    { 
+    {
         "lukas-reineke/virt-column.nvim",
         config = function()
             require("virt-column").setup()
         end
     },
-    { 
-        "echasnovski/mini.nvim", 
+    {
+        "echasnovski/mini.nvim",
         version = false,
         specs = {
             { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
@@ -39,7 +39,7 @@ return
             require('mini.icons').setup()
         end
     },
-    { 
+    {
         "Irdis/NuNvim",
         config = function()
             local config = {};
@@ -57,7 +57,7 @@ return
             require("nunvim").setup(config)
         end
     },
-    { 
+    {
         "Irdis/NoogleNvim",
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,
@@ -86,7 +86,7 @@ return
             end, { noremap = true })
         end
     },
-    { 
+    {
         "Irdis/Startup",
         -- dir = "c:\\Repo\\hazeltree\\startup\\",
         -- dev = true,
@@ -174,7 +174,7 @@ return
                             ["ia"] = "@parameter.inner",
                         },
                         selection_modes = {
-                            ['@function.outer'] = 'V', 
+                            ['@function.outer'] = 'V',
                         },
                     },
                     swap = {
@@ -209,7 +209,7 @@ return
             require("fzf-lua").setup({
                 defaults = {
                     formatter = "path.filename_first", -- places file name first
-                    path_shorten   = 1, 
+                    path_shorten = 1,
                 },
             })
             local fzflua = require('fzf-lua')

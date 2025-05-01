@@ -2,8 +2,8 @@ local const = require("const")
 local current_path = string.lower(vim.fn.getcwd())
 
 if current_path == const.ht_main then
-    local build_targets = { 
-        "Applications.sln",  
+    local build_targets = {
+        "Applications.sln",
         "Applications\\Hazeltree.Collateral.API\\Tests\\MarginCall.Business.IntegrationTests\\MarginCall.Business.IntegrationTests.csproj"
     }
     local build_target = 1
@@ -26,9 +26,9 @@ if current_path == const.ht_main then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif current_path == const.ht_white then 
-    local build_targets = { 
-        "WhiteApi.sln",  
+elseif current_path == const.ht_white then
+    local build_targets = {
+        "WhiteApi.sln",
     }
     local build_target = 1
     local current_target = build_targets[build_target]
