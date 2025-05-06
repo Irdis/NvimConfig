@@ -64,7 +64,7 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
-vim.keymap.set("n", "<Leader>co", function() 
+vim.keymap.set("n", "<Leader>co", function()
     vim.cmd("wa");
     require("bufferline").close_others()
 end, { noremap = true })
@@ -174,7 +174,7 @@ vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
 vim.keymap.set('n', '<Leader>ew',function()
     if match_id == nil then
         match_id = vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
-    else 
+    else
         vim.fn.matchdelete(match_id)
         match_id = nil;
     end
