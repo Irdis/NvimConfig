@@ -10,7 +10,7 @@ if current_path == const.ht_main then
     local current_target = build_targets[build_target]
 
     vim.keymap.set('n', '<Leader>ct', function()
-        build_target = math.fmod(build_target, table.getn(build_targets))  + 1
+        build_target = math.fmod(build_target, #build_targets)  + 1
         current_target = build_targets[build_target]
         print(build_target .. " " .. current_target)
         vim.opt.makeprg = const.ht_build .. ' ' .. current_target
