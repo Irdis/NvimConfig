@@ -208,8 +208,8 @@ return
         config = function()
             require("fzf-lua").setup({
                 defaults = {
-                    formatter = "path.filename_first", -- places file name first
-                    path_shorten = 1,
+                    formatter = "path.filename_first",
+                    -- path_shorten = 1,
                 },
             })
             local fzflua = require('fzf-lua')
@@ -230,8 +230,6 @@ return
         dependencies = { "mason.nvim" },
         config = function()
             local lspconfig = require("lspconfig");
-            lspconfig.lua_ls.setup({
-            })
             require("mason-lspconfig").setup()
             require("mason-lspconfig").setup_handlers({
                 function (server_name)
