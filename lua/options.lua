@@ -23,6 +23,7 @@ vim.opt.termguicolors = true
 vim.opt.pumheight = 10
 
 vim.opt.eol = false
+vim.opt.fixendofline = false
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "cs",
