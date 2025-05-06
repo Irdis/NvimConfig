@@ -230,10 +230,23 @@ return
         dependencies = { "mason.nvim" },
         config = function()
             local lspconfig = require("lspconfig");
+            lspconfig.lua_ls.setup({
+            })
             require("mason-lspconfig").setup()
             require("mason-lspconfig").setup_handlers({
                 function (server_name)
                     lspconfig[server_name].setup({})
+                end,
+                ['lua_ls'] = function()
+                    lspconfig.lua_ls.setup({
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { 'vim' }
+                                }
+                            }
+                        }
+                    })
                 end
             })
         end,

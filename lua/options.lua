@@ -123,10 +123,10 @@ vim.keymap.set('n', '<Leader>gW', function()
         :gsub('%"','""')
         :gsub('%/','\\/')
         :gsub('%?','\\?')
+    local cmd = 'Rg "' .. escaped .. '"';
     if grep_target ~= 1 then
         cmd = cmd .. " ".. grep_targets[grep_target]
     end
-    local cmd = 'Rg "' .. escaped .. '"';
     print(cmd)
     vim.cmd(cmd)
 end, { noremap = true })
