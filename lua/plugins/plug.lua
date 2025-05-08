@@ -154,8 +154,29 @@ return
         end,
     },
     {
+        "Irdis/tree-sitter-noogle",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+            parser_config.noogle = {
+                install_info = {
+                    url = "https://github.com/Irdis/tree-sitter-noogle.git",
+                    -- url = "C:\\Projects\\tree-sitter-noogle",
+                    files = {"src/parser.c"},
+                    branch = "main",
+                    generate_requires_npm = true,
+                },
+                filetype = "noog",
+            }
+        end,
+    },
+    {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "c_sharp", "sql" },
