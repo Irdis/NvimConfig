@@ -98,6 +98,28 @@ return
         end
     },
     {
+        "Irdis/RSqlCmdNvim",
+        -- dir = "C:\\Projects\\RSqlCmdNvim",
+        -- dev = true,
+        config = function()
+            require("rsqlcmd").setup({
+                connection_strings = {
+                    -- "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
+                    "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
+                }
+            })
+            vim.keymap.set('n', '<Leader>st', function()
+                require("rsqlcmd").next_target()
+            end, { noremap = true })
+            vim.keymap.set('n', '<Leader>sl', function()
+                require("rsqlcmd").toggle_nnl()
+            end, { noremap = true })
+
+            vim.keymap.set('v', '<Leader>es', ':RSqlCmd<CR>')
+            vim.keymap.set('n', '<Leader>es', ':%RSqlCmd<CR>')
+        end
+    },
+    {
         'rmagatti/auto-session',
         lazy = false,
         opts = {
