@@ -1,5 +1,5 @@
 local const = require("const")
-
+local at_work = require("env").at_work()
 return
 {
     {
@@ -104,8 +104,8 @@ return
         config = function()
             require("rsqlcmd").setup({
                 connection_strings = {
-                    -- "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
-                    "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
+                    at_work and "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
+                    or "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             })
             vim.keymap.set('n', '<Leader>st', function()
