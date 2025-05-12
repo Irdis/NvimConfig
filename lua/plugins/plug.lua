@@ -99,14 +99,21 @@ return
     },
     {
         "Irdis/RSqlCmdNvim",
-        -- dir = "C:\\Projects\\RSqlCmdNvim",
+        -- dir = "C:\\Repo\\RSqlCmdNvim",
         -- dev = true,
         config = function()
-            require("rsqlcmd").setup({
+            local connection_strings = nil
+            if at_work then
                 connection_strings = {
-                    at_work and "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
-                    or "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
+                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
+            else
+                connection_strings = {
+                    "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
+                }
+            end
+            require("rsqlcmd").setup({
+                connection_strings = connection_strings
             })
             vim.keymap.set('n', '<Leader>st', function()
                 require("rsqlcmd").next_target()
