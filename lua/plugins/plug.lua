@@ -18,6 +18,32 @@ return
     { "Irdis/vim-dadbod" },
     { "kamykn/spelunker.vim" },
     {
+        'saghen/blink.cmp',
+        dependencies = { 'rafamadriz/friendly-snippets' },
+
+        version = '1.*',
+        opts = {
+            keymap = {
+                ["<C-n>"] = { "show", "select_next" },
+            },
+
+            appearance = {
+                nerd_font_variant = 'Nerd Font'
+            },
+            completion = {
+                documentation = { auto_show = false },
+                ghost_text = { enabled = true },
+                menu = { auto_show = false, },
+
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            fuzzy = { implementation = "prefer_rust_with_warning" },
+        },
+        opts_extend = { "sources.default" }
+    },
+    {
         "lukas-reineke/virt-column.nvim",
         config = function()
             require("virt-column").setup()
