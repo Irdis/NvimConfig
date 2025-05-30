@@ -159,7 +159,7 @@ vim.g.spelunker_disable_auto_group = 0
 vim.api.nvim_create_augroup("spelunker", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
   group = "spelunker",
-  pattern = { "*.vim", "*.js", "*.jsx", "*.json", "*.md", "*.cs", "*.sql", "*.ts" },
+  pattern = { "*.vim", "*.js", "*.jsx", "*.json", "*.md", "*.cs", "*.sql", "*.ts", "*.lua" },
   callback = function()
     vim.fn["spelunker#check"]()
   end,
