@@ -30,6 +30,7 @@ return
             appearance = {
                 nerd_font_variant = 'Nerd Font'
             },
+            cmdline = { enabled = false },
             completion = {
                 documentation = { auto_show = false },
                 ghost_text = { enabled = true },
