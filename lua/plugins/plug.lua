@@ -16,6 +16,14 @@ return
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     { "Irdis/vim-dadbod" },
+    {
+        "goolord/alpha-nvim",
+        dependencies = 'kyazdani42/nvim-web-devicons',
+        config = function ()
+            local screen = require("screen");
+            require('alpha').setup(screen)
+        end
+    },
     { "kamykn/spelunker.vim" },
     {
         'saghen/blink.cmp',
