@@ -21,7 +21,9 @@ return
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function ()
             local screen = require("screen");
-            require('alpha').setup(screen)
+            if screen ~= nil then
+                require('alpha').setup(screen)
+            end
         end
     },
     { "kamykn/spelunker.vim" },
