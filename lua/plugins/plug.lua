@@ -249,7 +249,7 @@ return
                 auto_install = true,
                 highlight = {
                     enable = true,
-                    disable = { "sql" }
+                    -- disable = { "sql" }
                 },
                 textobjects = {
                     select = {
