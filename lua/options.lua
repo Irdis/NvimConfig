@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.cinoptions = "(s,m1,J1,j1"
     end,
 })
-
 vim.opt.colorcolumn = "120"
 
 -- disable netrw at the very start of your init.lua
@@ -157,13 +156,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.g.spelunker_disable_auto_group = 0
 vim.api.nvim_create_augroup("spelunker", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
-  group = "spelunker",
-  pattern = { "*.vim", "*.js", "*.jsx", "*.json", "*.md", "*.cs", "*.sql", "*.ts", "*.lua" },
-  callback = function()
+
+vim.keymap.set('n', '<Leader>sc', function()
     vim.fn["spelunker#check"]()
-  end,
-})
+end, { noremap = true })
 
 vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
 
