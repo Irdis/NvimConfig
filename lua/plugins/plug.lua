@@ -329,5 +329,10 @@ return
             })
             require("mason-lspconfig").setup({})
         end,
-    }
+    },
+    -- {
+    --     "Irdis/tsql-vim-syntax",
+    --     dir = "C:\\Projects\\tsql-vim-syntax",
+    --     dev = true,
+    -- },
 }

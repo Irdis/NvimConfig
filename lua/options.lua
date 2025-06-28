@@ -89,7 +89,7 @@ vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
 
-vim.keymap.set('n', '<Leader>is', ':set filetype=sql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
+vim.keymap.set('n', '<Leader>is', ':set filetype=tsql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
 vim.keymap.set('n', '<Leader>il', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry.<ESC>')
 vim.keymap.set('n', '<Leader>iL', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<ESC>')
 
