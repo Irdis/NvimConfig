@@ -136,7 +136,7 @@ return
     },
     {
         "Irdis/RSqlCmdNvim",
-        -- dir = "C:\\Repo\\RSqlCmdNvim",
+        -- dir = "C:\\Projects\\RSqlCmdNvim",
         -- dev = true,
         config = function()
             local connection_strings = nil
@@ -161,6 +161,9 @@ return
 
             vim.keymap.set('v', '<Leader>es', ':RSqlCmd<CR>')
             vim.keymap.set('n', '<Leader>es', ':%RSqlCmd<CR>')
+
+            vim.keymap.set('v', '<Leader>eS', ':RSqlCmd -i<CR>')
+            vim.keymap.set('n', '<Leader>eS', ':%RSqlCmd -i<CR>')
         end
     },
     {
