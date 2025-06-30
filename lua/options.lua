@@ -133,7 +133,7 @@ vim.keymap.set('n', '<Leader>sf', function()
 end, { noremap = true })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "sql",
+  pattern = { "sql", "tsql" },
   callback = function()
     vim.opt_local.commentstring = "-- %s"
   end,
