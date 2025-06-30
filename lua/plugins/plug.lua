@@ -136,7 +136,7 @@ return
     },
     {
         "Irdis/RSqlCmdNvim",
-        -- dir = "C:\\Repo\\RSqlCmdNvim",
+        -- dir = "C:\\Projects\\RSqlCmdNvim",
         -- dev = true,
         config = function()
             local connection_strings = nil
@@ -161,6 +161,9 @@ return
 
             vim.keymap.set('v', '<Leader>es', ':RSqlCmd<CR>')
             vim.keymap.set('n', '<Leader>es', ':%RSqlCmd<CR>')
+
+            vim.keymap.set('v', '<Leader>eS', ':RSqlCmd -i<CR>')
+            vim.keymap.set('n', '<Leader>eS', ':%RSqlCmd -i<CR>')
         end
     },
     {
@@ -245,7 +248,7 @@ return
         },
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "c_sharp", "sql" },
+                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "c_sharp" },
                 auto_install = true,
                 highlight = {
                     enable = true,
@@ -329,5 +332,10 @@ return
             })
             require("mason-lspconfig").setup({})
         end,
-    }
+    },
+    {
+        "Irdis/tsql-vim-syntax",
+        -- dir = "C:\\Projects\\tsql-vim-syntax",
+        -- dev = true,
+    },
 }

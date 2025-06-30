@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.cinoptions = "(s,m1,J1,j1"
     end,
 })
-
 vim.opt.colorcolumn = "120"
 
 -- disable netrw at the very start of your init.lua
@@ -89,7 +88,7 @@ vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
 
-vim.keymap.set('n', '<Leader>is', ':set filetype=sql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
+vim.keymap.set('n', '<Leader>is', ':set filetype=tsql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
 vim.keymap.set('n', '<Leader>il', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry.<ESC>')
 vim.keymap.set('n', '<Leader>iL', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<ESC>')
 
@@ -157,13 +156,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.g.spelunker_disable_auto_group = 0
 vim.api.nvim_create_augroup("spelunker", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufWritePost" }, {
-  group = "spelunker",
-  pattern = { "*.vim", "*.js", "*.jsx", "*.json", "*.md", "*.cs", "*.sql", "*.ts", "*.lua" },
-  callback = function()
+
+vim.keymap.set('n', '<Leader>sc', function()
     vim.fn["spelunker#check"]()
-  end,
-})
+end, { noremap = true })
 
 vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
 
