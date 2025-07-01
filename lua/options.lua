@@ -54,8 +54,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.g.loc = "sqlserver://localhost"
-
 vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',space='␣' }
 
 vim.keymap.set('n', '<Space>', ':noh<CR>')

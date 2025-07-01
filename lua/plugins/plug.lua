@@ -210,18 +210,6 @@ return
         end,
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        config = function()
-            require("nvim-tree").setup({
-                update_focused_file = { enable = true },
-                git = { enable = false },
-                view = { adaptive_size = true }
-            })
-            local api = require('nvim-tree.api');
-            vim.keymap.set('n', '<Leader>ll', api.tree.toggle, {})
-        end,
-    },
-    {
         "Irdis/tree-sitter-noogle",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
