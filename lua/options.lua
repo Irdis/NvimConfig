@@ -174,6 +174,16 @@ vim.keymap.set('n', '<Leader>ew',function()
     end
 end, { noremap = true})
 
+vim.keymap.set('n', '<Leader>ll', function()
+    local cmd = 'r !git log -1 --pretty=\\%B';
+    vim.cmd(cmd)
+end, { noremap = true })
+
+vim.keymap.set('n', '<Leader>lL', function()
+    local cmd = 'r !git log -10 --pretty=\\%B';
+    vim.cmd(cmd)
+end, { noremap = true })
+
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })

@@ -125,8 +125,8 @@ return
     },
     {
         "Irdis/Startup",
-        dir = "c:\\Repo\\hazeltree\\startup\\",
-        dev = true,
+        -- dir = "c:\\Repo\\hazeltree\\startup\\",
+        -- dev = true,
         config = function()
             local ht = require('startup.ht')
             require("startup").setup({
