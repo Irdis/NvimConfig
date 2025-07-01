@@ -111,25 +111,6 @@ vim.keymap.set('n', '<Leader>gw', function()
     vim.cmd(cmd)
 end, { noremap = true })
 
-vim.keymap.set('n', '<Leader>gW', function()
-    local escaped = vim.fn.expand('<cWORD>')
-        :gsub('%(','\\(')
-        :gsub('%)','\\)')
-        :gsub('%[','\\[')
-        :gsub('%]','\\]')
-        :gsub('%{','\\{')
-        :gsub('%}','\\}')
-        :gsub('%"','""')
-        :gsub('%/','\\/')
-        :gsub('%?','\\?')
-    local cmd = 'Rg "' .. escaped .. '"';
-    if grep_target ~= 1 then
-        cmd = cmd .. " ".. grep_targets[grep_target]
-    end
-    print(cmd)
-    vim.cmd(cmd)
-end, { noremap = true })
-
 vim.keymap.set('n', '<Leader>sf', function()
       vim.opt_local.foldmethod = "syntax"
 end, { noremap = true })
