@@ -15,7 +15,6 @@ return
     { "tpope/vim-fugitive" },
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
-    { "Irdis/vim-dadbod" },
     {
         "goolord/alpha-nvim",
         dependencies = 'kyazdani42/nvim-web-devicons',
