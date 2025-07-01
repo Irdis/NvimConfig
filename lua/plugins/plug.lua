@@ -88,8 +88,8 @@ return
             else
                 config.nunitconsole = const.nunit_net6;
                 vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
-                vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true })<CR>')
             end
+            vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true })<CR>')
 
             require("nunvim").setup(config)
         end
