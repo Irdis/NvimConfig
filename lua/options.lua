@@ -87,6 +87,8 @@ vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent<CR>')
+vim.keymap.set('n', '<Leader>ll', ':r !git log -1 --pretty=\\%B --author=Ivan<CR>')
+vim.keymap.set('n', '<Leader>lL', ':r !git log -10 --pretty=\\%B --author=Ivan<CR>')
 
 vim.keymap.set('n', '<Leader>is', ':set filetype=tsql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>')
 vim.keymap.set('n', '<Leader>il', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry.<ESC>')
@@ -173,16 +175,6 @@ vim.keymap.set('n', '<Leader>ew',function()
         match_id = nil;
     end
 end, { noremap = true})
-
-vim.keymap.set('n', '<Leader>ll', function()
-    local cmd = 'r !git log -1 --pretty=\\%B';
-    vim.cmd(cmd)
-end, { noremap = true })
-
-vim.keymap.set('n', '<Leader>lL', function()
-    local cmd = 'r !git log -10 --pretty=\\%B';
-    vim.cmd(cmd)
-end, { noremap = true })
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
