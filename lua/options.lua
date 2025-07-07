@@ -165,8 +165,7 @@ vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
 vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
 vim.diagnostic.config({ virtual_text = true })
 
-vim.keymap.set('n', '<Leader>fs',function()
+vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");
-end, { noremap = true})
-
+end, {})
