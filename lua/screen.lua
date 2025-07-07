@@ -1,4 +1,4 @@
-local options
+local options = { too_small = true }
 if (vim.api.nvim_exec('echo argc()', true) == "0")
 then
   Headers = {

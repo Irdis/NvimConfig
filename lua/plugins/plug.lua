@@ -20,7 +20,7 @@ return
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function ()
             local screen = require("screen");
-            if screen ~= nil then
+            if not screen.too_small then
                 require('alpha').setup(screen)
             end
         end
