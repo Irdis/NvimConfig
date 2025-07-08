@@ -153,7 +153,7 @@ vim.keymap.set('n', '<Leader>ew',function()
         vim.fn.matchdelete(match_id)
         match_id = nil;
     end
-end, { noremap = true})
+end, { noremap = true })
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
@@ -169,3 +169,31 @@ vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");
 end, {})
+
+vim.keymap.set('n', '<Leader>fe',function()
+    local pos = vim.api.nvim_win_get_cursor(0)
+    local col = pos[2]
+    local line = vim.api.nvim_get_current_line()
+
+    local b = nil
+    local e = nil
+    local path = ""
+    local lineno = ""
+    local found = false
+
+    b, e = 0, 0
+    while true do
+        b, e, path, lineno = string.find(line, "([%w%._%-/\\:]+%.%w+):line (%d+)", b + 1)
+        if b == nil or e == nil then break end
+        if b <= col and col <= e then
+            found = true
+            break
+        end
+        if b > col then break end
+        b = e
+    end
+    if found then
+        vim.cmd("edit " .. vim.fn.fnameescape(path))
+        vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
+    end
+end, { noremap = true })
