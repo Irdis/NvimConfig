@@ -170,7 +170,7 @@ vim.api.nvim_create_user_command("FixShada", function()
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");
 end, {})
 
-vim.keymap.set('n', '<Leader>fe',function()
+local function follow_path(precise)
     local pos = vim.api.nvim_win_get_cursor(0)
     local col = pos[2]
     local line = vim.api.nvim_get_current_line()
@@ -185,6 +185,10 @@ vim.keymap.set('n', '<Leader>fe',function()
     while true do
         b, e, path, lineno = string.find(line, "([%w%._%-/\\:]+%.%w+):line (%d+)", b + 1)
         if b == nil or e == nil then break end
+        if not precise then
+            found = true
+            break
+        end
         if b <= col and col <= e then
             found = true
             break
@@ -195,5 +199,13 @@ vim.keymap.set('n', '<Leader>fe',function()
     if found then
         vim.cmd("edit " .. vim.fn.fnameescape(path))
         vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
+    else
+        print('Nothing has found')
     end
+end
+vim.keymap.set('n', '<Leader>fp',function()
+    follow_path(false)
+end, { noremap = true })
+vim.keymap.set('n', '<Leader>fP',function()
+    follow_path(true)
 end, { noremap = true })
