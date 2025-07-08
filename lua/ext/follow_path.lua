@@ -27,7 +27,7 @@ local function follow_path(precise)
     if found then
         vim.cmd("edit " .. vim.fn.fnameescape(path))
         vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
-        vim.cmd("zz")
+        vim.cmd("norm zz")
     else
         print('Nothing has found')
     end
