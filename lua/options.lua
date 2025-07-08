@@ -98,7 +98,7 @@ local grep_target = 1
 vim.keymap.set('n', '<Leader>gt',function()
     grep_target = math.fmod(grep_target, #grep_targets) + 1
     print(grep_target .. " " .. grep_targets[grep_target])
-end, { noremap = true})
+end, { noremap = true })
 
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
