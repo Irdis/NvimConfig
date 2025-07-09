@@ -47,7 +47,7 @@ return
 
             },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'buffer' },
             },
             fuzzy = { implementation = "prefer_rust_with_warning" },
         },
@@ -135,7 +135,7 @@ return
     },
     {
         "Irdis/RSqlCmdNvim",
-        -- dir = "C:\\Projects\\RSqlCmdNvim",
+        -- dir = "C:\\Repo\\RSqlCmdNvim",
         -- dev = true,
         config = function()
             local connection_strings = nil

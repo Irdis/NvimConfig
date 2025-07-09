@@ -116,7 +116,7 @@ end, { noremap = true })
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "sql", "tsql" },
   callback = function()
-    vim.opt_local.commentstring = "-- %s"
+      vim.opt_local.commentstring = "-- %s"
   end,
 })
 
@@ -142,7 +142,7 @@ vim.keymap.set('n', '<Leader>sc', function()
     vim.fn["spelunker#check"]()
 end, { noremap = true })
 
-vim.keymap.set("n", "<leader>rw", [[:%s/\s\+$//e<CR>]])
+vim.keymap.set("n", "<Leader>rw", [[:%s/\s\+$//e<CR>]])
 
 local match_id = nil
 vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
