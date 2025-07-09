@@ -29,7 +29,7 @@ local function follow_path(precise)
         vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
         vim.cmd("norm zz")
     else
-        print('Nothing has found')
+        print('Nothing has been found')
     end
 end
 vim.keymap.set('n', '<Leader>fp',function()
