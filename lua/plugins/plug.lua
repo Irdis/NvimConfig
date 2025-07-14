@@ -77,6 +77,8 @@ return
     },
     {
         "Irdis/NuNvim",
+        -- dir = "C:\\Repo\\NuNvim\\",
+        -- dev = true,
         config = function()
             local config = {};
             local current_path = string.lower(vim.fn.getcwd())
@@ -86,9 +88,9 @@ return
                 vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             else
                 config.nunitconsole = const.nunit_net6;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug()<CR>')
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             end
-            vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true })<CR>')
+            vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true, run_outside = true })<CR>')
 
             require("nunvim").setup(config)
         end
@@ -293,11 +295,7 @@ return
                 },
                 defaults = {
                     formatter = "path.filename_first",
-                    -- path_shorten = 1,
                 },
-                -- buffers = {
-                --     path_shorten = 1,
-                -- }
             })
             local fzflua = require('fzf-lua')
             vim.keymap.set('n', '<leader>ff', fzflua.files, {})
