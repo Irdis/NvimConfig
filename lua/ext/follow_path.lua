@@ -1,7 +1,10 @@
 local function follow_path(precise)
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local col = pos[2]
-    local line = vim.api.nvim_get_current_line()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+    -- local line = vim.api.nvim_get_current_line()
+    local buf = vim.api.nvim_get_current_buf()
+    local lines = vim.api.nvim_buf_get_lines(buf, row - 1, row + 2, false)
+    local line = table.concat(lines)
 
     local b = nil
     local e = nil
