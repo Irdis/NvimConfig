@@ -28,9 +28,13 @@ local function follow_path(precise)
         b = e
     end
     if found then
-        vim.cmd("edit " .. vim.fn.fnameescape(path))
-        vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
-        vim.cmd("norm zz")
+        if vim.fn.filereadable(path) == 0 then
+            print('File is not readable ' .. vim.fn.fnameescape(path))
+        else
+            vim.cmd("edit " .. vim.fn.fnameescape(path))
+            vim.api.nvim_win_set_cursor(0, {tonumber(lineno), 0})
+            vim.cmd("norm zz")
+        end
     else
         print('Nothing has been found')
     end
