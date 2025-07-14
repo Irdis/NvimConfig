@@ -285,13 +285,19 @@ return
         opts = {},
         config = function()
             require("fzf-lua").setup({
+                winopts = {
+                    width = 0.95,
+                    preview = {
+                        hidden = true
+                    }
+                },
                 defaults = {
                     formatter = "path.filename_first",
                     -- path_shorten = 1,
                 },
-                buffers = {
-                    path_shorten = 1,
-                }
+                -- buffers = {
+                --     path_shorten = 1,
+                -- }
             })
             local fzflua = require('fzf-lua')
             vim.keymap.set('n', '<leader>ff', fzflua.files, {})

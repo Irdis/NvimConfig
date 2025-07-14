@@ -41,9 +41,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_exec('language en_US', true)
 
 vim.opt.signcolumn = "yes"
-vim.opt.guifont = { "Fira Code", "h12" }
-
--- vim.opt.foldmethod = "syntax"
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
