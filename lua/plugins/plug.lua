@@ -298,10 +298,9 @@ return
                 },
             })
             local fzflua = require('fzf-lua')
-            vim.keymap.set('n', '<leader>ff', fzflua.files, {})
+            vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
+            vim.keymap.set('n', '<leader>fF', fzflua.files, {})
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
-            vim.keymap.set('n', '<leader>gg', fzflua.grep, {})
-            vim.keymap.set('n', '<leader>gl', fzflua.live_grep, {})
         end
     },
     {

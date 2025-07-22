@@ -25,12 +25,6 @@ vim.opt.pumheight = 10
 vim.opt.eol = false
 vim.opt.fixendofline = false
 
-vim.api.nvim_create_autocmd("TermOpen", {
-    callback = function()
-        vim.opt_local.number = true
-        vim.opt_local.relativenumber = true
-    end,
-})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "cs",
     callback = function()
