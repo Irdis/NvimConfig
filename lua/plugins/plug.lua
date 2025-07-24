@@ -143,7 +143,8 @@ return
             local connection_strings = nil
             if at_work then
                 connection_strings = {
-                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
+                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
+                    "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             else
                 connection_strings = {
@@ -273,9 +274,11 @@ return
                         set_jumps = true,
                         goto_next_start = {
                             ["]a"] = "@parameter.inner",
+                            ["]f"] = "@function.outer",
                         },
                         goto_previous_start = {
                             ["[a"] = "@parameter.inner",
+                            ["[f"] = "@function.outer",
                         },
                     },
                 },
@@ -301,6 +304,7 @@ return
             vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
             vim.keymap.set('n', '<leader>fF', fzflua.files, {})
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
+            vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
         end
     },
     {
