@@ -1,7 +1,19 @@
 local const = require("const")
-local current_path = string.lower(vim.fn.getcwd())
+local current_path = vim.fn.getcwd()
 
-if current_path == const.ht_main then
+local function normal_dotnet()
+    vim.cmd [[
+        let dotnet_show_project_file = v:false
+        let dotnet_errors_only = v:true
+        compiler! dotnet
+    ]]
+end
+
+local function compare_path(a, b)
+    return a:lower() == b:lower()
+end
+
+if compare_path(current_path, const.ht_main) then
     local build_targets = {
         "Applications.sln",
         "Applications\\Hazeltree.Collateral.API\\Tests\\MarginCall.Business.IntegrationTests\\MarginCall.Business.IntegrationTests.csproj"
@@ -26,7 +38,7 @@ if current_path == const.ht_main then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif current_path == const.ht_white then
+elseif compare_path(current_path, const.ht_white) then
     local build_targets = {
         "WhiteApi.sln",
     }
@@ -42,10 +54,9 @@ elseif current_path == const.ht_white then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
+elseif compare_path(current_path, const.home_rule110) then
+    vim.keymap.set('n', '<F5>', ':exe "!dotnet run" | exe "!start img_0.bmp"<CR>"')
+    normal_dotnet()
 else
-    vim.cmd [[
-        let dotnet_show_project_file = v:false
-        let dotnet_errors_only = v:true
-        compiler! dotnet
-    ]]
+    normal_dotnet()
 end
