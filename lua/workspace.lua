@@ -9,11 +9,11 @@ local function normal_dotnet()
     ]]
 end
 
-local function compare_path(a, b)
+local function compare_paths(a, b)
     return a:lower() == b:lower()
 end
 
-if compare_path(current_path, const.ht_main) then
+if compare_paths(current_path, const.ht_main) then
     local build_targets = {
         "Applications.sln",
         "Applications\\Hazeltree.Collateral.API\\Tests\\MarginCall.Business.IntegrationTests\\MarginCall.Business.IntegrationTests.csproj"
@@ -38,7 +38,7 @@ if compare_path(current_path, const.ht_main) then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif compare_path(current_path, const.ht_white) then
+elseif compare_paths(current_path, const.ht_white) then
     local build_targets = {
         "WhiteApi.sln",
     }
@@ -54,7 +54,7 @@ elseif compare_path(current_path, const.ht_white) then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif compare_path(current_path, const.home_rule110) then
+elseif compare_paths(current_path, const.home_rule110) then
     vim.keymap.set('n', '<F5>', ':exe "!dotnet run" | exe "!start img_0.bmp"<CR>"')
     normal_dotnet()
 else
