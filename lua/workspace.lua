@@ -54,7 +54,8 @@ elseif compare_paths(current_path, const.ht_white) then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif compare_paths(current_path, const.home_rule110) then
+elseif compare_paths(current_path, const.home_rule110) or
+       compare_paths(current_path, const.ht_rule110) then
     vim.keymap.set('n', '<F5>', ':exe "!dotnet run" | exe "!start img_0.bmp"<CR>"')
     normal_dotnet()
 else

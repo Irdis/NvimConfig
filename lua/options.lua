@@ -69,6 +69,8 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
 vim.keymap.set("n", "<Tab>", ":bnext<CR>")
 vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
+vim.keymap.set("n", "]b", ":lua print('use tab')<CR>")
+vim.keymap.set("n", "[b", ":lua print('use shift tab')<CR>")
 
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")

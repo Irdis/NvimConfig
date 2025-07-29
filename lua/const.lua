@@ -8,6 +8,7 @@ return
     ht_build = "c:\\Repo\\hazeltree\\setup\\build.bat",
 
     home_rule110 = "C:\\Projects\\Rule110",
+    ht_rule110 = "C:\\Repo\\Rule110",
 
     nuget = "c:\\distr\\nuget.exe",
 }
