@@ -143,7 +143,7 @@ return
             local connection_strings = nil
             if at_work then
                 connection_strings = {
-                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
+                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
                     "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             else
