@@ -204,12 +204,54 @@ return
     {
         "akinsho/bufferline.nvim",
         config = function()
-            require("bufferline").setup({
+            local bufferline = require('bufferline')
+            bufferline.setup({
                 options = {
                     show_buffer_close_icons = false,
                     show_close_icon = false,
                 }
             })
+
+            vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
+            vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
+
+            vim.keymap.set('n', ']b', ':BufferLineMoveNext<CR>')
+            vim.keymap.set('n', '[b', ':BufferLineMovePrev<CR>')
+
+            vim.keymap.set('n', ']B', function ()
+                local elements = bufferline.get_elements().elements;
+                local buf = vim.api.nvim_get_current_buf();
+                local target_index = -1;
+
+                for index, item in ipairs(elements) do
+                    if item.id == buf then
+                        target_index = index
+                    end
+                end
+                if target_index > 0 then
+                    bufferline.cycle(#elements - target_index)
+                end
+            end, { noremap = true })
+
+            vim.keymap.set('n', '[B', function ()
+                local elements = bufferline.get_elements().elements;
+                local buf = vim.api.nvim_get_current_buf();
+                local target_index = -1;
+
+                for index, item in ipairs(elements) do
+                    if item.id == buf then
+                        target_index = index
+                    end
+                end
+                print(target_index)
+                if target_index > 0 then
+                    bufferline.cycle(-target_index + 1)
+                end
+            end, { noremap = true })
+
+            vim.keymap.set("n", "<Leader>cr", ':BufferLineCloseRight<CR>')
+            vim.keymap.set("n", "<Leader>co", ':BufferLineCloseOthers<CR>')
+
         end,
     },
     {

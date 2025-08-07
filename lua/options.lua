@@ -67,17 +67,8 @@ vim.keymap.set('n', '<Leader>rl', 'i<Up><CR><C-\\><C-n>')
 
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
-vim.keymap.set("n", "<Tab>", ":bnext<CR>")
-vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
-vim.keymap.set("n", "]b", ":lua print('use tab')<CR>")
-vim.keymap.set("n", "[b", ":lua print('use shift tab')<CR>")
-
 vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
 vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
-vim.keymap.set("n", "<Leader>co", function()
-    vim.cmd("wa");
-    require("bufferline").close_others()
-end, { noremap = true })
 
 vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
