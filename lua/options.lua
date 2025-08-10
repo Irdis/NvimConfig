@@ -24,6 +24,9 @@ vim.opt.pumheight = 10
 
 vim.opt.eol = false
 vim.opt.fixendofline = false
+
+vim.opt.guicursor:append("t:hor20")
+
 vim.api.nvim_create_autocmd("TermOpen", {
     callback = function()
         if vim.bo.buflisted then
