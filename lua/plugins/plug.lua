@@ -206,6 +206,18 @@ return
                             vim.cmd(cmd)
                         end,
                     },
+                    ['<Leader>lc'] = {
+                        desc = 'List archive content',
+                        callback = function ()
+                            require('oil.actions').copy_entry_path.callback()
+                            local file_path = vim.fn.getreg(vim.v.register)
+                            if string.find(file_path, " ") then
+                                file_path = '"' .. file_path ..'"'
+                            end
+                            local cmd = "!7z l " .. file_path
+                            vim.cmd(cmd)
+                        end,
+                    },
                 },
             })
         end,
