@@ -190,15 +190,22 @@ return
                             vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
                         end,
                     },
-                    -- ['<Leader>rd'] = {
-                    --     desc = 'Open/run in default program',
-                    --     callback = function ()
-                    --         require('oil.actions').copy_entry_path.callback()
-                    --         local path = vim.fn.getreg(vim.v.register)
-                    --         local cmd = '!start "" "' .. path .. '"';
-                    --         vim.cmd(cmd)
-                    --     end,
-                    -- },
+                    ['<Leader>ef'] = {
+                        desc = 'Extract file',
+                        callback = function ()
+                            require('oil.actions').copy_entry_path.callback()
+                            local file_path = vim.fn.getreg(vim.v.register)
+                            local folder = vim.fn.fnamemodify(file_path, ":h")
+                            if string.find(file_path, " ") then
+                                file_path = '"' .. file_path ..'"'
+                            end
+                            if string.find(folder, " ") then
+                                folder = '"' .. folder ..'"'
+                            end
+                            local cmd = "!7z x -o" .. folder .. " " .. file_path
+                            vim.cmd(cmd)
+                        end,
+                    },
                 },
             })
         end,
