@@ -190,7 +190,7 @@ return
                             vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
                         end,
                     },
-                    ['<Leader>ef'] = {
+                    ['<Leader>ea'] = {
                         desc = 'Extract file',
                         callback = function ()
                             require('oil.actions').copy_entry_path.callback()
@@ -206,7 +206,7 @@ return
                             vim.cmd(cmd)
                         end,
                     },
-                    ['<Leader>lc'] = {
+                    ['<Leader>la'] = {
                         desc = 'List archive content',
                         callback = function ()
                             require('oil.actions').copy_entry_path.callback()
