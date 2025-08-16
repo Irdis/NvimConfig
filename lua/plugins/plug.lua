@@ -100,7 +100,19 @@ return
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,
         config = function()
-            require("noogle").setup({})
+            local paths = {}
+            if at_work then
+                paths = {
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
+                }
+            else
+                paths = {
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
+                }
+            end
+            require("noogle").setup({
+                additional_locations = paths
+            })
 
             vim.keymap.set('n', '<Leader>nt', function()
                 local cmd = 'Noogle -t ' .. vim.fn.expand('<cword>');
@@ -182,6 +194,10 @@ return
         opts = {},
         config = function()
             require("oil").setup({
+                columns = {
+                    "icon",
+                    "size",
+                },
                 keymaps = {
                     ['<Leader>yp'] = {
                         desc = 'Copy filepath to system clipboard',
@@ -191,7 +207,7 @@ return
                         end,
                     },
                     ['<Leader>ea'] = {
-                        desc = 'Extract file',
+                        desc = 'Extract archive',
                         callback = function ()
                             require('oil.actions').copy_entry_path.callback()
                             local file_path = vim.fn.getreg(vim.v.register)
