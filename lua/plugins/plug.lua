@@ -189,6 +189,15 @@ return
                             vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
                         end,
                     },
+                    -- ['<Leader>rd'] = {
+                    --     desc = 'Open/run in default program',
+                    --     callback = function ()
+                    --         require('oil.actions').copy_entry_path.callback()
+                    --         local path = vim.fn.getreg(vim.v.register)
+                    --         local cmd = '!start "" "' .. path .. '"';
+                    --         vim.cmd(cmd)
+                    --     end,
+                    -- },
                 },
             })
         end,

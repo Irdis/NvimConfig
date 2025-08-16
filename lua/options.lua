@@ -78,7 +78,7 @@ vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set("n", "<Leader>sm", vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>sm', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.keymap.set('n', '<Leader>pp', ':let @p = @*<CR>')
 
@@ -106,7 +106,7 @@ vim.keymap.set('n', '<Leader>gt',function()
 end, { noremap = true })
 
 vim.keymap.set('n', '<Leader>gw', function()
-    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
+    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b'
     if grep_target ~= 1 then
         cmd = cmd .. " ".. grep_targets[grep_target]
     end
