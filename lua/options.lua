@@ -90,6 +90,8 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
+vim.keymap.set('n', '<Leader>ds', 'V:s`\\\\`\\\\\\\\`g<CR>:noh<CR>')
+
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>ll', ':r !git log -1 --pretty=\\%B\\%-C() --author=Novit<CR>')
