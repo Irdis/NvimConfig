@@ -144,7 +144,7 @@ return
             if at_work then
                 connection_strings = {
                     "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
-                    "Data Source=(local)\\s19;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
+                    "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200",
                     "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             else
