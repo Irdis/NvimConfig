@@ -100,7 +100,19 @@ return
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,
         config = function()
-            require("noogle").setup({})
+            local paths = {}
+            if at_work then
+                paths = {
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
+                }
+            else
+                paths = {
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
+                }
+            end
+            require("noogle").setup({
+                additional_locations = paths
+            })
 
             vim.keymap.set('n', '<Leader>nt', function()
                 local cmd = 'Noogle -t ' .. vim.fn.expand('<cword>');
@@ -182,12 +194,44 @@ return
         opts = {},
         config = function()
             require("oil").setup({
+                columns = {
+                    "icon",
+                    "size",
+                },
                 keymaps = {
                     ['<Leader>yp'] = {
                         desc = 'Copy filepath to system clipboard',
                         callback = function ()
                             require('oil.actions').copy_entry_path.callback()
                             vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
+                        end,
+                    },
+                    ['<Leader>ea'] = {
+                        desc = 'Extract archive',
+                        callback = function ()
+                            require('oil.actions').copy_entry_path.callback()
+                            local file_path = vim.fn.getreg(vim.v.register)
+                            local folder = vim.fn.fnamemodify(file_path, ":h")
+                            if string.find(file_path, " ") then
+                                file_path = '"' .. file_path ..'"'
+                            end
+                            if string.find(folder, " ") then
+                                folder = '"' .. folder ..'"'
+                            end
+                            local cmd = "!7z x -o" .. folder .. " " .. file_path
+                            vim.cmd(cmd)
+                        end,
+                    },
+                    ['<Leader>la'] = {
+                        desc = 'List archive content',
+                        callback = function ()
+                            require('oil.actions').copy_entry_path.callback()
+                            local file_path = vim.fn.getreg(vim.v.register)
+                            if string.find(file_path, " ") then
+                                file_path = '"' .. file_path ..'"'
+                            end
+                            local cmd = "!7z l " .. file_path
+                            vim.cmd(cmd)
                         end,
                     },
                 },

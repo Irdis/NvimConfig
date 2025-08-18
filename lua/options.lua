@@ -80,7 +80,7 @@ vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
 vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set("n", "<Leader>sm", vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>sm', vim.diagnostic.open_float, { noremap = true, silent = true })
 
 vim.keymap.set('n', '<Leader>pp', ':let @p = @*<CR>')
 
@@ -89,6 +89,9 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
+
+vim.keymap.set('n', '<Leader>ds', 'V:s`\\\\`\\\\\\\\`g<CR>:noh<CR>')
+vim.keymap.set('n', '<Leader>dS', 'V:s`\\\\\\\\`\\\\`g<CR>:noh<CR>')
 
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
@@ -108,7 +111,7 @@ vim.keymap.set('n', '<Leader>gt',function()
 end, { noremap = true })
 
 vim.keymap.set('n', '<Leader>gw', function()
-    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b';
+    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b'
     if grep_target ~= 1 then
         cmd = cmd .. " ".. grep_targets[grep_target]
     end
