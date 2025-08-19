@@ -72,8 +72,7 @@ vim.keymap.set('n', '<Leader>rl', 'i<Up><CR><C-\\><C-n>')
 
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 
-vim.keymap.set("n", "<Leader>cc", ":bd<CR>")
-vim.keymap.set("n", "<Leader>cC", ":bd!<CR>")
+vim.keymap.set("n", "<Leader>x", ":bd!<CR>")
 
 vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
