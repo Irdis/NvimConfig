@@ -373,27 +373,42 @@ return
         end
     },
     {
-        "ibhagwan/fzf-lua",
-        opts = {},
-        config = function()
-            require("fzf-lua").setup({
-                winopts = {
-                    width = 0.95,
-                    preview = {
-                        hidden = true
-                    }
-                },
-                defaults = {
-                    formatter = "path.filename_first",
-                },
-            })
-            local fzflua = require('fzf-lua')
-            vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
-            vim.keymap.set('n', '<leader>fF', fzflua.files, {})
-            vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
-            vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
+        "junegunn/fzf.vim",
+        dependencies = { "junegunn/fzf" },
+        config = function ()
+            vim.cmd [[
+                let g:fzf_vim = {}
+                let g:fzf_vim.preview_window = [] 
+                let g:fzf_force_termguicolors = 1
+            ]]
+            vim.keymap.set('n', '<leader>ff', ":GFiles<CR>")
+            vim.keymap.set('n', '<leader>fF', ":Files<CR>")
+            vim.keymap.set('n', '<leader>fb', ":Buffers<CR>")
+            vim.keymap.set('n', '<leader>ft', ":Tags<CR>")
         end
     },
+    -- {
+    --     "ibhagwan/fzf-lua",
+    --     opts = {},
+    --     config = function()
+    --         require("fzf-lua").setup({
+    --             winopts = {
+    --                 width = 0.95,
+    --                 preview = {
+    --                     hidden = true
+    --                 }
+    --             },
+    --             defaults = {
+    --                 formatter = "path.filename_first",
+    --             },
+    --         })
+    --         local fzflua = require('fzf-lua')
+    --         vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
+    --         vim.keymap.set('n', '<leader>fF', fzflua.files, {})
+    --         vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
+    --         vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
+    --     end
+    -- },
     {
         "williamboman/mason.nvim",
         config = function()

@@ -64,7 +64,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',space='␣' }
 
 vim.keymap.set('n', '<Space>', ':noh<CR>')
-vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+-- vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<Esc>', function()
+    if vim.bo.buflisted then
+        vim.cmd("stopinsert")
+    else
+        vim.cmd("q")
+    end
+end, {})
 vim.keymap.set('t', '<Leader>rl', 'i<Up><CR>')
 vim.keymap.set('t', '<M-k>', '<Up>')
 vim.keymap.set('t', '<M-j>', '<Down>')
