@@ -64,14 +64,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.opt.listchars = { eol='¬',tab='>·',trail='~',extends='>',precedes='<',space='␣' }
 
 vim.keymap.set('n', '<Space>', ':noh<CR>')
--- vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
-vim.keymap.set('t', '<Esc>', function()
-    if vim.bo.buflisted then
-        vim.cmd("stopinsert")
-    else
-        vim.cmd("q")
-    end
-end, {})
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<Leader>rl', 'i<Up><CR>')
 vim.keymap.set('t', '<M-k>', '<Up>')
 vim.keymap.set('t', '<M-j>', '<Down>')
@@ -159,17 +152,9 @@ vim.keymap.set('n', '<Leader>sc', function()
 end, { noremap = true })
 
 vim.keymap.set("n", "<Leader>rw", [[:%s/\s\+$//e<CR>]])
-
-local match_id = nil
-vim.api.nvim_set_hl(0, "ExtraWhitespace", { ctermbg = "red", bg = "red" })
-vim.keymap.set('n', '<Leader>ew',function()
-    if match_id == nil then
-        match_id = vim.fn.matchadd("ExtraWhitespace", [[\s\+$]])
-    else
-        vim.fn.matchdelete(match_id)
-        match_id = nil;
-    end
-end, { noremap = true })
+vim.keymap.set("n", "<Leader>ew", function ()
+    vim.cmd [[/\s\+$]]
+end, {})
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })

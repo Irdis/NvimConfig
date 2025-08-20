@@ -380,6 +380,7 @@ return
                 let g:fzf_vim = {}
                 let g:fzf_vim.preview_window = [] 
                 let g:fzf_force_termguicolors = 1
+                let g:fzf_layout = { 'down': '40%' }
             ]]
             vim.keymap.set('n', '<leader>ff', ":GFiles<CR>")
             vim.keymap.set('n', '<leader>fF', ":Files<CR>")
