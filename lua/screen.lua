@@ -44,10 +44,9 @@ then
         "And those that tasted the bite of his sword named him...",
         "The Doom Slayer."
     },
-    hl  = "Normal",
     opts = {
       position = "center",
-      hl       = "Whitespace",
+      hl       = "Normal",
     }
   }
 
