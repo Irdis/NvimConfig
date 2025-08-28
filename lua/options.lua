@@ -77,10 +77,6 @@ vim.keymap.set("n", "<Leader>x", ":bd!<CR>")
 vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
 vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
 
-vim.keymap.set('n', '<Leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n', '<Leader>sh', ':lua vim.lsp.buf.hover()<CR>')
-vim.keymap.set('n', '<Leader>sm', vim.diagnostic.open_float, { noremap = true, silent = true })
-
 vim.keymap.set('n', '<Leader>pp', ':let @p = @*<CR>')
 
 vim.keymap.set('v', '<Leader>el', ':lua<CR>')
@@ -100,6 +96,9 @@ vim.keymap.set('n', '<Leader>lL', ':r !git log -10 --pretty=\\%B\\%-C() --author
 vim.keymap.set('n', '<Leader>is', ':set filetype=tsql<CR>iSET ANSI_NULLS, QUOTED_IDENTIFIER ON;<CR>GO<CR><ESC>i')
 vim.keymap.set('n', '<Leader>il', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry.<ESC>')
 vim.keymap.set('n', '<Leader>iL', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<ESC>')
+
+vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
+vim.diagnostic.config({ virtual_text = true })
 
 local grep_targets = { "", "-tcs" }
 local grep_target = 1
@@ -158,13 +157,10 @@ end, {})
 
 vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-
-
-vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
-vim.diagnostic.config({ virtual_text = true })
+vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#1e1e2e'})
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
