@@ -444,10 +444,4 @@ return
         -- dir = "C:\\Projects\\tsql-vim-syntax",
         -- dev = true,
     },
-    {
-        "seblyng/roslyn.nvim",
-        config = function ()
-            require("roslyn").setup({})
-        end
-    }
 }
