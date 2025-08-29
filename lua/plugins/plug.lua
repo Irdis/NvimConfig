@@ -96,6 +96,14 @@ return
         end
     },
     {
+        "Irdis/JetInspectNvim",
+        -- dir = "C:\\Repo\\JetInspectNvim\\",
+        -- dev = true,
+        config = function()
+            require("jetinspect").setup({})
+        end
+    },
+    {
         "Irdis/NoogleNvim",
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,

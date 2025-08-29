@@ -3,10 +3,7 @@ local function quick_ctags(tagname)
 
     if #tags == 0 then
         print("No tags found for: " .. tagname)
-        return
-    end
-
-    if #tags == 1 then
+    elseif #tags == 1 then
         vim.cmd("tag " .. tagname)
     else
         local qf_entries = {}
