@@ -309,6 +309,8 @@ return
     },
     {
         "Irdis/tree-sitter-noogle",
+        -- dir = "C:\\Projects\\tree-sitter-noogle",
+        -- dev = true,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
         },
