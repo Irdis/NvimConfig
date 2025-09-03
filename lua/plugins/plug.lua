@@ -267,6 +267,8 @@ return
 
             vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
             vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
+            vim.keymap.set("t", '<Tab>', '<C-\\><C-n>:BufferLineCycleNext<CR>')
+            vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>:BufferLineCyclePrev<CR>")
 
             vim.keymap.set('n', ']b', ':BufferLineMoveNext<CR>')
             vim.keymap.set('n', '[b', ':BufferLineMovePrev<CR>')
