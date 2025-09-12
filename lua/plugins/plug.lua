@@ -111,7 +111,7 @@ return
             local paths = {}
             if at_work then
                 paths = {
-                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.9"
                 }
             else
                 paths = {
@@ -165,7 +165,8 @@ return
                 connection_strings = {
                     "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
                     "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200",
-                    "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
+                    "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
+                    "Data Source=rls121;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             else
                 connection_strings = {
@@ -267,8 +268,8 @@ return
 
             vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>")
             vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>")
-            vim.keymap.set("t", '<Tab>', '<C-\\><C-n>:BufferLineCycleNext<CR>')
-            vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>:BufferLineCyclePrev<CR>")
+            -- vim.keymap.set("t", '<Tab>', '<C-\\><C-n>:BufferLineCycleNext<CR>')
+            -- vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>:BufferLineCyclePrev<CR>")
 
             vim.keymap.set('n', ']b', ':BufferLineMoveNext<CR>')
             vim.keymap.set('n', '[b', ':BufferLineMovePrev<CR>')
