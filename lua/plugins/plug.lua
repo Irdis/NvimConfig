@@ -305,6 +305,7 @@ return
                 end
             end, { noremap = true })
 
+            vim.keymap.set("n", "<Leader>cl", ':BufferLineCloseLeft<CR>')
             vim.keymap.set("n", "<Leader>cr", ':BufferLineCloseRight<CR>')
             vim.keymap.set("n", "<Leader>co", ':BufferLineCloseOthers<CR>')
 
@@ -398,6 +399,7 @@ return
                 },
                 defaults = {
                     formatter = "path.filename_first",
+                    git_icons = false,
                 },
             })
             local fzflua = require('fzf-lua')
