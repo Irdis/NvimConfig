@@ -166,7 +166,7 @@ return
                     "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
                     "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200",
                     "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
-                    "Data Source=rls121;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
+                    "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
                 }
             else
                 connection_strings = {
@@ -271,6 +271,7 @@ return
             -- vim.keymap.set("t", '<Tab>', '<C-\\><C-n>:BufferLineCycleNext<CR>')
             -- vim.keymap.set("t", "<S-Tab>", "<C-\\><C-n>:BufferLineCyclePrev<CR>")
 
+            vim.keymap.set('n', '<Leader>pt', ':BufferLineTogglePin<CR>')
             vim.keymap.set('n', ']b', ':BufferLineMoveNext<CR>')
             vim.keymap.set('n', '[b', ':BufferLineMovePrev<CR>')
 
