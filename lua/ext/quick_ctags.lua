@@ -8,9 +8,13 @@ local function quick_ctags(tagname)
     else
         local qf_entries = {}
         for _, t in ipairs(tags) do
+            local pattern = t.cmd:sub(2, -2)
+            pattern = pattern
+                :gsub("%[", "\\[")
+                :gsub("%]", "\\]")
             table.insert(qf_entries, {
                 filename = t.filename,
-                pattern = t.cmd:sub(2, -2),
+                pattern = pattern,
                 text = '',
             })
         end
