@@ -1,6 +1,7 @@
 local patterns = {
  "([%w%._%-/\\:]+%.%w+):line (%d+)",
- "([%w%._%-/\\:]+%.%w+):(%d+):(%d+)"
+ "([%w%._%-/\\:]+%.%w+):(%d+):(%d+)",
+ "([%w%._%-/\\:]+%.%w+)%((%d+),(%d+)%)"
 }
 local function follow_path(precise)
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))

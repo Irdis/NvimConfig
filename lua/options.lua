@@ -160,7 +160,7 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#1e1e2e'})
+vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#171b1f'})
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")

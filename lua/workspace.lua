@@ -16,7 +16,8 @@ end
 if compare_paths(current_path, const.ht_main) then
     local build_targets = {
         "Applications.sln",
-        "Applications\\Hazeltree.Collateral.API\\Tests\\MarginCall.Business.IntegrationTests\\MarginCall.Business.IntegrationTests.csproj"
+        "Applications\\Hazeltree.Collateral.API\\Tests\\MarginCall.Business.IntegrationTests\\MarginCall.Business.IntegrationTests.csproj",
+        "Applications\\Fuzzy\\Tests\\Reconciliation.Fuzzy.IntegrationTests\\Reconciliation.Fuzzy.IntegrationTests.csproj"
     }
     local build_target = 1
     local current_target = build_targets[build_target]
