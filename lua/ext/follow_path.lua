@@ -44,7 +44,7 @@ local function follow_path(precise)
             local linenum = tonumber(lineno)
             local colnum = 0
             if colno ~= nil then
-                colnum = tonumber(colno)
+                colnum = tonumber(colno) - 1
             end
             vim.cmd("edit " .. vim.fn.fnameescape(path))
             vim.api.nvim_win_set_cursor(0, {linenum, colnum})
