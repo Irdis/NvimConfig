@@ -388,6 +388,23 @@ return
         end
     },
     {
+      'dmtrKovalenko/fff.nvim',
+      build = function()
+        require("fff.download").download_or_build_binary()
+      end,
+      opts = {
+          prompt = '',
+          max_threads = 20,
+          preview = {
+              enabled = false,
+          },
+      },
+      lazy = false,
+      keys = {
+        { "<Leader>ff", function() require('fff').find_files() end }
+      }
+    },
+    {
         "ibhagwan/fzf-lua",
         opts = {},
         config = function()
@@ -404,7 +421,7 @@ return
                 },
             })
             local fzflua = require('fzf-lua')
-            vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
+            -- vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
             vim.keymap.set('n', '<leader>fF', fzflua.files, {})
             vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
