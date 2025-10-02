@@ -388,6 +388,17 @@ return
         end
     },
     {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            picker = { enabled = true },
+        },
+        keys = {
+            { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+        }
+    },
+    {
       'dmtrKovalenko/fff.nvim',
       build = function()
         require("fff.download").download_or_build_binary()
@@ -423,14 +434,13 @@ return
             local fzflua = require('fzf-lua')
             -- vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
             vim.keymap.set('n', '<leader>fF', fzflua.files, {})
-            vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
+            -- vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
         end
     },
     {
         "williamboman/mason.nvim",
         config = function()
-            -- require("mason").setup()
             require("mason").setup({
                 registries = {
                     "github:mason-org/mason-registry",
