@@ -54,12 +54,6 @@ return
         opts_extend = { "sources.default" }
     },
     {
-        "lukas-reineke/virt-column.nvim",
-        config = function()
-            require("virt-column").setup()
-        end
-    },
-    {
         "echasnovski/mini.nvim",
         version = false,
         specs = {
