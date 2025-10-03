@@ -75,7 +75,7 @@ vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
 vim.keymap.set("n", "<Leader>x", ":bd!<CR>")
 
 vim.keymap.set('n', '<Leader>sq', ':copen<CR>')
-vim.keymap.set('n', '<Leader>b', ':wa | make<CR>')
+vim.keymap.set('n', '<Leader>b', ':exe "WriteNamed" | make<CR>')
 
 vim.keymap.set('n', '<Leader>pp', ':let @p = @*<CR>')
 
