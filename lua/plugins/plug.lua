@@ -101,6 +101,9 @@ return
         "Irdis/NoogleNvim",
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,
+        build = function ()
+            require("noogle").build()
+        end,
         config = function()
             local paths = {}
             if at_work then
@@ -116,26 +119,10 @@ return
                 additional_locations = paths
             })
 
-            vim.keymap.set('n', '<Leader>nt', function()
-                local cmd = 'Noogle -t ' .. vim.fn.expand('<cword>');
-                print(cmd)
-                vim.cmd(cmd)
-            end, { noremap = true })
-            vim.keymap.set('n', '<Leader>nT', function()
-                local cmd = 'Noogle -i -a -t ' .. vim.fn.expand('<cword>');
-                print(cmd)
-                vim.cmd(cmd)
-            end, { noremap = true })
-            vim.keymap.set('n', '<Leader>nm', function()
-                local cmd = 'Noogle -m ' .. vim.fn.expand('<cword>');
-                print(cmd)
-                vim.cmd(cmd)
-            end, { noremap = true })
-            vim.keymap.set('n', '<Leader>nM', function()
-                local cmd = 'Noogle -i -a -m ' .. vim.fn.expand('<cword>');
-                print(cmd)
-                vim.cmd(cmd)
-            end, { noremap = true })
+            vim.keymap.set('n', '<Leader>nt', function() vim.cmd('NoogleType ' .. vim.fn.expand('<cword>')) end)
+            vim.keymap.set('n', '<Leader>nT', function() vim.cmd('NoogleTypeExt ' .. vim.fn.expand('<cword>')) end)
+            vim.keymap.set('n', '<Leader>nm', function() vim.cmd('NoogleMethod ' .. vim.fn.expand('<cword>')) end)
+            vim.keymap.set('n', '<Leader>nM', function() vim.cmd('NoogleMethodExt ' .. vim.fn.expand('<cword>')) end)
         end
     },
     {
@@ -304,27 +291,6 @@ return
             vim.keymap.set("n", "<Leader>cr", ':BufferLineCloseRight<CR>')
             vim.keymap.set("n", "<Leader>co", ':BufferLineCloseOthers<CR>')
 
-        end,
-    },
-    {
-        "Irdis/tree-sitter-noogle",
-        -- dir = "C:\\Projects\\tree-sitter-noogle",
-        -- dev = true,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.noogle = {
-                install_info = {
-                    url = "https://github.com/Irdis/tree-sitter-noogle.git",
-                    -- url = "C:\\Projects\\tree-sitter-noogle",
-                    files = {"src/parser.c"},
-                    branch = "main",
-                    generate_requires_npm = true,
-                },
-                filetype = "noog",
-            }
         end,
     },
     {
