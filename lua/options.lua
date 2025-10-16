@@ -166,3 +166,9 @@ vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");
 end, {})
+
+vim.filetype.add({
+    extension = {
+        resx = "xml"
+    }
+})
