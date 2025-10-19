@@ -3,7 +3,7 @@ local current_path = vim.fn.getcwd()
 
 local function normal_make()
     vim.opt.makeprg = 'make'
-    vim.opt.errorformat = "%f(%l): %trror C%n: %m,%-G%.%#"
+    vim.opt.errorformat = "%f(%l): %trror C%n: %m,%f(%l): %tarning C%n: %m,%-G%.%#"
 end
 
 local function normal_dotnet()
@@ -64,7 +64,7 @@ elseif compare_paths(current_path, const.home_rule110) or
        compare_paths(current_path, const.ht_rule110) then
     vim.keymap.set('n', '<F5>', ':exe "!dotnet run" | exe "!start img_0.bmp"<CR>"')
     normal_dotnet()
-elseif compare_paths(current_path, const.swsm)  then
+elseif compare_paths(current_path, const.swimd)  then
     normal_make()
 else
     normal_dotnet()

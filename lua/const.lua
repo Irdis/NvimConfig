@@ -10,7 +10,7 @@ return
     ht_rule110 = "C:\\Repo\\Rule110",
 
     home_rule110 = "C:\\Projects\\Rule110",
-    swsm = "C:\\Projects\\swsm",
+    swimd = "C:\\Projects\\swimd",
 
     nuget = "c:\\distr\\nuget.exe",
 }
