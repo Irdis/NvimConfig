@@ -138,8 +138,11 @@ return
     },
     {
         "Irdis/RSqlCmdNvim",
-        -- dir = "C:\\Repo\\RSqlCmdNvim",
+        -- dir = "C:\\Projects\\RSqlCmdNvim",
         -- dev = true,
+        build = function ()
+            require("rsqlcmd").build()
+        end,
         config = function()
             local connection_strings = nil
             if at_work then

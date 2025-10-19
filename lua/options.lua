@@ -131,8 +131,13 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function(arg)
       local ts = ".ts"
+      local c = ".c"
       if arg.match:sub(-#ts) == ts then
           vim.keymap.set('n', '<F2>', ':!ctags -R --languages=typescript<CR>')
+          vim.keymap.set('n', '<Leader>a{', 'a {<CR><CR>}<ESC>kcc')
+          vim.keymap.set('n', '<Leader>A{', 'A {<CR><CR>}<ESC>kcc')
+      elseif arg.match:sub(-#c) == c then
+          vim.keymap.set('n', '<F2>', ':!ctags -R --languages=c<CR>')
           vim.keymap.set('n', '<Leader>a{', 'a {<CR><CR>}<ESC>kcc')
           vim.keymap.set('n', '<Leader>A{', 'A {<CR><CR>}<ESC>kcc')
       else
