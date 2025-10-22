@@ -43,6 +43,7 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 vim.opt.colorcolumn = "120"
+vim.opt.textwidth = 120
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
