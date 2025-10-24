@@ -86,8 +86,8 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
 
-vim.keymap.set('n', '<Leader>dc', 'vyV:s`<C-r>*`<C-r>*<C-r>*`g<CR>:noh<CR>')
-vim.keymap.set('n', '<Leader>dC', 'vyV:s`<C-r>*<C-r>*`<C-r>*`g<CR>:noh<CR>')
+vim.keymap.set('n', '<Leader>dc', 'mmvyV:s`<C-r>*`<C-r>*<C-r>*`g<CR>:noh<CR>`m')
+vim.keymap.set('n', '<Leader>dC', 'mmvyV:s`<C-r>*<C-r>*`<C-r>*`g<CR>:noh<CR>`m')
 
 vim.keymap.set('n', '<Leader>ds', 'V:s`\\\\`\\\\\\\\`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>dS', 'V:s`\\\\\\\\`\\\\`g<CR>:noh<CR>')
