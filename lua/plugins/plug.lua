@@ -199,6 +199,17 @@ return
                             vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
                         end,
                     },
+                    ['<Leader>rp'] = {
+                        desc = 'Copy relative path to system clipboard',
+                        callback = function ()
+                            require('oil.actions').copy_entry_path.callback()
+                            local cwd = vim.fn.getcwd()
+                            local reg_value = vim.fn.getreg(vim.v.register)
+                            local rel_path = reg_value:sub(#cwd + 2)
+
+                            vim.fn.setreg("+", rel_path)
+                        end,
+                    },
                     ['<Leader>ea'] = {
                         desc = 'Extract archive',
                         callback = function ()
