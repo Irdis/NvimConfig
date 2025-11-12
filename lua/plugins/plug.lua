@@ -108,7 +108,7 @@ return
             local paths = {}
             if at_work then
                 paths = {
-                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.10"
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.11"
                 }
             else
                 paths = {
