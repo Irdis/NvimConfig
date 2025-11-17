@@ -108,7 +108,7 @@ return
             local paths = {}
             if at_work then
                 paths = {
-                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.11"
+                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\10.0.0"
                 }
             else
                 paths = {
@@ -150,7 +150,7 @@ return
                     "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
                     "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200",
                     "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
-                    "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True"
+                    "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200"
                 }
             else
                 connection_strings = {
