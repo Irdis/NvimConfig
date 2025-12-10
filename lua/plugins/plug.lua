@@ -147,22 +147,33 @@ return
             local connection_strings = nil
             if at_work then
                 connection_strings = {
-                    "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120",
-                    "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200",
-                    "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True",
-                    "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200"
+                    { text = "local", val = "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120" },
+                    { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
+                    { text = "LAB-DB09\\DB02", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" }
                 }
             else
                 connection_strings = {
-                    "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True"
+                    { text = "local", val = "Data Source=(local);Integrated Security=SSPI;TrustServerCertificate=True" }
                 }
             end
+            local connection_string = connection_strings[1]
+            local simple_select = require('ext/simple_select')
+
+            simple_select.register('n',
+                '<Leader>st',
+                'Connection string',
+                connection_strings,
+                function () return connection_string end,
+                function (item) return item.text end,
+                function (selected)
+                    connection_string = selected
+                    require("rsqlcmd").set_connection_string(connection_string.val)
+                end
+            )
             require("rsqlcmd").setup({
-                connection_strings = connection_strings
+                connection_string = connection_string.val
             })
-            vim.keymap.set('n', '<Leader>st', function()
-                require("rsqlcmd").next_target()
-            end, { noremap = true })
             vim.keymap.set('n', '<Leader>sl', function()
                 require("rsqlcmd").toggle_nnl()
             end, { noremap = true })

@@ -1,3 +1,5 @@
+local simple_select = require('ext/simple_select')
+
 vim.opt.number = true
 vim.opt.history = 200
 vim.opt.wildmenu = true
@@ -105,18 +107,25 @@ vim.keymap.set('n', '<Leader>iL', 'iLorem Ipsum is simply dummy text of the prin
 vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
 vim.diagnostic.config({ virtual_text = true })
 
-local grep_targets = { "", "-tcs" }
-local grep_target = 1
+local grep_targets = {
+    { val = "", text = "All" },
+    { val = "-tcs", text = "C#" }
+}
+local grep_target = grep_targets[1]
 
-vim.keymap.set('n', '<Leader>gt',function()
-    grep_target = math.fmod(grep_target, #grep_targets) + 1
-    print(grep_target .. " " .. grep_targets[grep_target])
-end, { noremap = true })
+simple_select.register('n',
+    '<Leader>gt',
+    'Grep lang',
+    grep_targets,
+    function () return grep_target end,
+    function (item) return item.text end,
+    function (selected) grep_target = selected end
+)
 
 vim.keymap.set('n', '<Leader>gw', function()
     local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b'
-    if grep_target ~= 1 then
-        cmd = cmd .. " ".. grep_targets[grep_target]
+    if grep_target.val ~= "" then
+        cmd = cmd .. " ".. grep_target.val
     end
     print(cmd)
     vim.cmd(cmd)
