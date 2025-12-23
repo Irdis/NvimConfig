@@ -106,14 +106,14 @@ return
         end,
         config = function()
             local paths = {}
-            if at_work then
-                paths = {
-                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\10.0.0"
-                }
+            local dotnet_folder = "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App"
+            local latest_dotnet = require("ext/latest_dotnet")
+                .get_latest(dotnet_folder)
+
+            if latest_dotnet ~= nil then
+                table.insert(paths, latest_dotnet)
             else
-                paths = {
-                    "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\9.0.8"
-                }
+                print("Unable to find the latest dotnet in folder: " .. dotnet_folder)
             end
             require("noogle").setup({
                 additional_locations = paths
@@ -150,7 +150,7 @@ return
                     { text = "local", val = "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120" },
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
-                    { text = "LAB-DB09\\DB02", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" }
+                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" }
                 }
             else
                 connection_strings = {
