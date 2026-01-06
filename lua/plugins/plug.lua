@@ -13,6 +13,7 @@ return
     },
     { "tpope/vim-unimpaired", },
     { "tpope/vim-fugitive" },
+    { "tpope/vim-abolish" },
     { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     {
