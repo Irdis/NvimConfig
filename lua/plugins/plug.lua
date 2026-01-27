@@ -151,6 +151,7 @@ return
                     { text = "local", val = "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120" },
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
+                    { text = "rls123", val = "Data Source=rls123;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" }
                 }
             else
@@ -325,7 +326,7 @@ return
         build = ':TSUpdate',
         config = function()
             vim.api.nvim_create_autocmd('FileType', {
-                pattern = { 'lua', 'cs', 'noogle' },
+                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript' },
                 callback = function() vim.treesitter.start() end
             })
         end
