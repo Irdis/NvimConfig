@@ -14,7 +14,6 @@ return
     { "tpope/vim-unimpaired", },
     { "tpope/vim-fugitive" },
     { "tpope/vim-abolish" },
-    { "jremmen/vim-ripgrep" },
     { "tpope/vim-surround" },
     {
         "goolord/alpha-nvim",
@@ -152,7 +151,8 @@ return
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls123", val = "Data Source=rls123;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
-                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" }
+                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB-DB09\\DB05 qa02-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                 }
             else
                 connection_strings = {

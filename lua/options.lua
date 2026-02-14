@@ -122,8 +122,9 @@ simple_select.register('n',
     function (selected) grep_target = selected end
 )
 
+vim.opt.grepprg = "rg --vimgrep"
 vim.keymap.set('n', '<Leader>gw', function()
-    local cmd = 'Rg \\b' .. vim.fn.expand('<cword>') .. '\\b'
+    local cmd = 'gr \\b' .. vim.fn.expand('<cword>') .. '\\b'
     if grep_target.val ~= "" then
         cmd = cmd .. " ".. grep_target.val
     end
