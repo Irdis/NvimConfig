@@ -456,4 +456,16 @@ return
         -- dir = "C:\\Projects\\tsql-vim-syntax",
         -- dev = true,
     },
+    -- {
+    --     "Irdis/swimd",
+    --     dir = "C:\\Projects\\swimd",
+    --     dev = true,
+    --     dependencies = { "folke/snacks.nvim" },
+    --     config = function()
+    --         require('swimd-lua').setup();
+    --     end,
+    --     keys = {
+    --         { "<Leader>ff", function() require('swimd-lua').open_picker() end }
+    --     }
+    -- }
 }
