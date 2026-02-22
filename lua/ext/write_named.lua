@@ -1,4 +1,4 @@
-local function write_named() 
+local function write_named()
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_get_option(buf, "modified")
        and vim.api.nvim_buf_get_name(buf) ~= "" then
