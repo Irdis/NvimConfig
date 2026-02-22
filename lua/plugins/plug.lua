@@ -11,7 +11,8 @@ return
             vim.cmd.colorscheme("everforest")
         end
     },
-    { "tpope/vim-unimpaired", },
+    { "vim-scripts/YankRing.vim" },
+    { "tpope/vim-unimpaired" },
     { "tpope/vim-fugitive" },
     { "tpope/vim-abolish" },
     { "tpope/vim-surround" },
