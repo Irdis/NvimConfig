@@ -11,7 +11,7 @@ return
             vim.cmd.colorscheme("everforest")
         end
     },
-    { "tpope/vim-unimpaired", },
+    { "tpope/vim-unimpaired" },
     { "tpope/vim-fugitive" },
     { "tpope/vim-abolish" },
     { "tpope/vim-surround" },
@@ -326,7 +326,7 @@ return
         build = ':TSUpdate',
         config = function()
             vim.api.nvim_create_autocmd('FileType', {
-                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript' },
+                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript', 'c' },
                 callback = function() vim.treesitter.start() end
             })
         end
@@ -457,5 +457,17 @@ return
         "Irdis/tsql-vim-syntax",
         -- dir = "C:\\Projects\\tsql-vim-syntax",
         -- dev = true,
-    }
+    },
+    -- {
+    --     "Irdis/swimd",
+    --     dir = "C:\\Projects\\swimd",
+    --     dev = true,
+    --     dependencies = { "folke/snacks.nvim" },
+    --     config = function()
+    --         require('swimd-lua').setup();
+    --     end,
+    --     keys = {
+    --         { "<Leader>ff", function() require('swimd-lua').open_picker() end }
+    --     }
+    -- }
 }
