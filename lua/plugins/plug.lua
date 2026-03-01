@@ -1,5 +1,6 @@
 local const = require("const")
 local at_work = require("env").at_work()
+local is_linux = require("env").is_linux()
 return
 {
     {
@@ -112,7 +113,7 @@ return
 
             if latest_dotnet ~= nil then
                 table.insert(paths, latest_dotnet)
-            else
+            elseif not is_linux then
                 print("Unable to find the latest dotnet in folder: " .. dotnet_folder)
             end
             require("noogle").setup({

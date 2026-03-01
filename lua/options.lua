@@ -1,4 +1,5 @@
 local simple_select = require('ext/simple_select')
+local env = require('env')
 
 vim.opt.number = true
 vim.opt.history = 200
@@ -50,8 +51,6 @@ vim.opt.textwidth = 120
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
-vim.api.nvim_exec('language en_US', true)
 
 vim.opt.signcolumn = "yes"
 
@@ -175,12 +174,14 @@ vim.keymap.set("n", "<Leader>ew", function ()
     vim.cmd [[/\s\+$]]
 end, {})
 
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
+if not env.is_linux() then
+    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
+end
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
