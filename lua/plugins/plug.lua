@@ -1,5 +1,6 @@
 local const = require("const")
 local at_work = require("env").at_work()
+local is_linux = require("env").is_linux()
 return
 {
     {
@@ -112,7 +113,7 @@ return
 
             if latest_dotnet ~= nil then
                 table.insert(paths, latest_dotnet)
-            else
+            elseif not is_linux then
                 print("Unable to find the latest dotnet in folder: " .. dotnet_folder)
             end
             require("noogle").setup({
@@ -398,7 +399,9 @@ return
       },
       lazy = false,
       keys = {
-        { "<Leader>ff", function() require('fff').find_files() end }
+        { "<Leader>ff", function() require('fff').find_files() end },
+        { "<Leader>fg", function() require('fff').live_grep() end },
+        { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
       }
     },
     {
