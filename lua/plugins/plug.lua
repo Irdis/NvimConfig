@@ -468,7 +468,8 @@ return
     --         require('swimd-lua').setup();
     --     end,
     --     keys = {
-    --         { "<Leader>ff", function() require('swimd-lua').open_picker() end }
+    --         { "<Leader>ff", function() require('swimd-lua').open_picker_git() end },
+    --         { "<Leader>fF", function() require('swimd-lua').open_picker_files() end }
     --     }
     -- }
 }
