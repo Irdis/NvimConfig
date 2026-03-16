@@ -95,6 +95,8 @@ vim.keymap.set('n', '<Leader>dC', 'mmv"dyV:s`<C-r>d<C-r>d`<C-r>d`g<CR>:noh<CR>`m
 vim.keymap.set('n', '<Leader>ds', 'V:s`\\\\`\\\\\\\\`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>dS', 'V:s`\\\\\\\\`\\\\`g<CR>:noh<CR>')
 
+vim.keymap.set('n', '<Leader>o', 'f,a<CR><Esc>_')
+
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>ll', ':r !git log -1 --pretty=\\%B\\%-C() --author=Novit<CR>')
