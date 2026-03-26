@@ -1,4 +1,5 @@
 local simple_select = require('ext/simple_select')
+local env = require('env')
 
 vim.opt.number = true
 vim.opt.history = 200
@@ -51,8 +52,6 @@ vim.opt.textwidth = 120
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.api.nvim_exec('language en_US', true)
-
 vim.opt.signcolumn = "yes"
 
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -94,6 +93,8 @@ vim.keymap.set('n', '<Leader>dc', 'mmv"dyV:s`<C-r>d`<C-r>d<C-r>d`g<CR>:noh<CR>`m
 vim.keymap.set('n', '<Leader>dC', 'mmv"dyV:s`<C-r>d<C-r>d`<C-r>d`g<CR>:noh<CR>`m')
 vim.keymap.set('n', '<Leader>ds', 'V:s`\\\\`\\\\\\\\`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>dS', 'V:s`\\\\\\\\`\\\\`g<CR>:noh<CR>')
+
+vim.keymap.set('n', '<Leader>o', 'f,a<CR><Esc>_')
 
 vim.keymap.set('n', '<Leader>ld', ':G log -2000 --all --decorate --oneline --graph --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
 vim.keymap.set('n', '<Leader>lf', ':G log -2000 --all --decorate --oneline --graph --first-parent --pretty=\'%h ~> %aN %as %ar%d ~> %B%-C()\'<CR>')
@@ -175,12 +176,14 @@ vim.keymap.set("n", "<Leader>ew", function ()
     vim.cmd [[/\s\+$]]
 end, {})
 
-vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
+if not env.is_linux() then
+    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
+end
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
