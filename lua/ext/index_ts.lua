@@ -29,13 +29,13 @@ local function index_ts()
     local lines = table.concat(exports, "\n") .. "\n"
     local f = io.open(index_path, "w")
     if not f then
-        print("tsindex: cannot write " .. index_path)
+        print("index_ts: cannot write " .. index_path)
         return
     end
     f:write(lines)
     f:close()
 
-    print("tsindex: wrote " .. index_path .. " (" .. #exports .. " exports)")
+    print("index_ts: wrote " .. index_path .. " (" .. #exports .. " exports)")
 
     local current_name = vim.fn.fnamemodify(current_file, ":t")
     if current_name == "index.ts" then
