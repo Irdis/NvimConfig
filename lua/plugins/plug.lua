@@ -399,9 +399,9 @@ return
       },
       lazy = false,
       keys = {
-        { "<Leader>ff", function() require('fff').find_files() end },
-        { "<Leader>fg", function() require('fff').live_grep() end },
-        { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
+        -- { "<Leader>ff", function() require('fff').find_files() end },
+        -- { "<Leader>fg", function() require('fff').live_grep() end },
+        -- { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
       }
     },
     {
@@ -459,17 +459,18 @@ return
         -- dir = "C:\\Projects\\tsql-vim-syntax",
         -- dev = true,
     },
-    -- {
-    --     "Irdis/swimd",
-    --     dir = "C:\\Projects\\swimd",
-    --     dev = true,
-    --     dependencies = { "folke/snacks.nvim" },
-    --     config = function()
-    --         require('swimd-lua').setup();
-    --     end,
-    --     keys = {
-    --         { "<Leader>ff", function() require('swimd-lua').open_picker_git() end },
-    --         { "<Leader>fF", function() require('swimd-lua').open_picker_files() end }
-    --     }
-    -- }
+    {
+        "Irdis/swimd",
+        -- dir = "C:\\Projects\\swimd",
+        -- dev = true,
+        dependencies = { "folke/snacks.nvim" },
+        config = function()
+            require('swimd-lua').setup();
+        end,
+        keys = {
+            { "<Leader>ff", function() require('swimd-lua').open_picker_git() end },
+            { "<Leader>fF", function() require('swimd-lua').open_picker_files() end },
+            { "<Leader>fr", function() require('swimd-lua').refresh() end }
+        }
+    }
 }
