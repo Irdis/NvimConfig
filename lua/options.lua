@@ -176,14 +176,14 @@ vim.keymap.set("n", "<Leader>ew", function ()
     vim.cmd [[/\s\+$]]
 end, {})
 
-if not env.is_linux() then
+-- if not env.is_linux() then
     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
     -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
     -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
     vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
-end
+-- end
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")

@@ -11,6 +11,7 @@ return
 
     home_rule110 = "C:\\Projects\\Rule110",
     swimd = "C:\\Projects\\swimd",
+    swimd_linux = "/home/ivan/Projects/swimd",
 
     nuget = "c:\\distr\\nuget.exe",
 }

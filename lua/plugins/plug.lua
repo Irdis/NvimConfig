@@ -398,11 +398,11 @@ return
           },
       },
       lazy = false,
-      keys = {
-        -- { "<Leader>ff", function() require('fff').find_files() end },
-        -- { "<Leader>fg", function() require('fff').live_grep() end },
-        -- { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
-      }
+      -- keys = {
+      --   { "<Leader>ff", function() require('fff').find_files() end },
+      --   { "<Leader>fg", function() require('fff').live_grep() end },
+      --   { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
+      -- }
     },
     {
         "ibhagwan/fzf-lua",
@@ -462,6 +462,7 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
+        -- dir = "/home/ivan/Projects/swimd",
         -- dev = true,
         dependencies = { "folke/snacks.nvim" },
         config = function()

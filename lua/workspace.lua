@@ -1,9 +1,14 @@
 local const = require("const")
+local env = require("env")
 local current_path = vim.fn.getcwd()
 
 local function normal_make()
     vim.opt.makeprg = 'make'
-    vim.opt.errorformat = "%f(%l): %trror C%n: %m,%f(%l): %tarning C%n: %m,%-G%.%#"
+    if not env.is_linux() then
+        vim.opt.errorformat = "%f(%l): %trror: %m,%f(%l): %tarning: %m,%f(%l): %ote: %m,%-G%.%#"
+    else 
+        vim.opt.errorformat = "%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m,%f:%l:%c: %tote: %m,%-G%.%#"
+    end
 end
 
 local function normal_dotnet()
@@ -64,7 +69,8 @@ elseif compare_paths(current_path, const.home_rule110) or
        compare_paths(current_path, const.ht_rule110) then
     vim.keymap.set('n', '<F5>', ':exe "!dotnet run" | exe "!start img_0.bmp"<CR>"')
     normal_dotnet()
-elseif compare_paths(current_path, const.swimd)  then
+elseif compare_paths(current_path, const.swimd) or 
+    compare_paths(current_path, const.swimd_linux) then
     normal_make()
 else
     normal_dotnet()
