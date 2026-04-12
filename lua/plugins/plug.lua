@@ -398,11 +398,6 @@ return
           },
       },
       lazy = false,
-      -- keys = {
-      --   { "<Leader>ff", function() require('fff').find_files() end },
-      --   { "<Leader>fg", function() require('fff').live_grep() end },
-      --   { "<Leader>fz", function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end }
-      -- }
     },
     {
         "ibhagwan/fzf-lua",
@@ -421,9 +416,6 @@ return
                 },
             })
             local fzflua = require('fzf-lua')
-            -- vim.keymap.set('n', '<leader>ff', fzflua.git_files, {})
-            -- vim.keymap.set('n', '<leader>fF', fzflua.files, {})
-            -- vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
             vim.keymap.set('n', '<leader>ft', fzflua.tags, {})
         end
     },
@@ -462,8 +454,8 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
-        dir = "/home/ivan/Projects/swimd",
-        dev = true,
+        -- dir = "/home/ivan/Projects/swimd",
+        -- dev = true,
         dependencies = { "folke/snacks.nvim" },
         config = function()
             require('swimd-lua').setup();
