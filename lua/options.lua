@@ -1,5 +1,4 @@
 local simple_select = require('ext/simple_select')
-local env = require('env')
 
 vim.opt.number = true
 vim.opt.history = 200
@@ -176,14 +175,12 @@ vim.keymap.set("n", "<Leader>ew", function ()
     vim.cmd [[/\s\+$]]
 end, {})
 
--- if not env.is_linux() then
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
-    -- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
--- end
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
+-- vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
+vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
