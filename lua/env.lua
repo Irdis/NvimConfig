@@ -6,6 +6,6 @@ M.at_work = function()
 end
 
 M.is_linux = function()
-    return vim.fn.has("linux") == 1 
+    return vim.fn.has("linux") == 1
 end
 return M
