@@ -456,7 +456,7 @@ return
         -- dir = "C:\\Projects\\swimd",
         -- dir = "/home/ivan/Projects/swimd",
         -- dev = true,
-        dependencies = { "folke/snacks.nvim" },
+        dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('swimd-lua').setup();
         end,
