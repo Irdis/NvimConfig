@@ -182,6 +182,10 @@ vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
 
+vim.api.nvim_create_user_command("PrintMessages", function()
+    vim.cmd("put =execute('messages')");
+end, {})
+
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");

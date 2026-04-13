@@ -44,7 +44,7 @@ function M.get_latest(root_path)
         return 0
     end)
 
-    return root_path .. "\\" .. latest.name
+    return root_path .. latest.name .. "/"
 end
 
 return M

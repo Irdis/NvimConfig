@@ -101,19 +101,30 @@ return
     {
         "Irdis/NoogleNvim",
         -- dir = "C:\\Projects\\NoogleNvim\\",
+        -- dir = "/home/ivan/Projects/NoogleNvim",
         -- dev = true,
         build = function ()
             require("noogle").build()
         end,
         config = function()
             local paths = {}
-            local dotnet_folder = "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App"
+            local dotnet_folder
+            if is_linux then
+                dotnet_folder = "/usr/share/dotnet/sdk/"
+            else
+                dotnet_folder = "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\"
+            end
+
             local latest_dotnet = require("ext/latest_dotnet")
                 .get_latest(dotnet_folder)
 
+            if latest_dotnet ~= nil and is_linux then
+                latest_dotnet = "Microsoft/Microsoft.NET.Build.Extensions/net461/lib/"
+            end
+
             if latest_dotnet ~= nil then
                 table.insert(paths, latest_dotnet)
-            elseif not is_linux then
+            else
                 print("Unable to find the latest dotnet in folder: " .. dotnet_folder)
             end
             require("noogle").setup({
@@ -454,8 +465,8 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
-        -- dir = "/home/ivan/Projects/swimd",
-        -- dev = true,
+        dir = "/home/ivan/Projects/swimd",
+        dev = true,
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('swimd-lua').setup();
