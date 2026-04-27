@@ -85,7 +85,6 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
-
 vim.keymap.set('n', '<Leader>f\\', 'V:s`\\\\`/`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>f/', 'V:s`/`\\\\`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>dc', 'mmv"dyV:s`<C-r>d`<C-r>d<C-r>d`g<CR>:noh<CR>`m')
@@ -184,6 +183,9 @@ vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
 
 vim.api.nvim_create_user_command("PrintMessages", function()
     vim.cmd("put =execute('messages')");
+end, {})
+vim.api.nvim_create_user_command("BufName", function()
+    vim.cmd("let @+ = expand('%')");
 end, {})
 
 vim.api.nvim_create_user_command("FixShada", function()
