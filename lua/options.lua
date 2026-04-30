@@ -161,6 +161,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
       end
   end,
 })
+vim.keymap.set('n', '<F5>', ':!make run<CR>')
 
 vim.g.spelunker_disable_auto_group = 0
 vim.api.nvim_create_augroup("spelunker", { clear = true })
