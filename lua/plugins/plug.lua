@@ -100,7 +100,7 @@ return
     },
     {
         "Irdis/NoogleNvim",
-        -- dir = "C:\\Projects\\NoogleNvim\\",
+        -- dir = "C:\\Repo\\NoogleNvim\\",
         -- dir = "/home/ivan/Projects/NoogleNvim",
         -- dev = true,
         build = function ()
@@ -331,11 +331,12 @@ return
     },
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         lazy = false,
         build = ':TSUpdate',
         config = function()
             vim.api.nvim_create_autocmd('FileType', {
-                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript', 'c' },
+                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript', 'c', 'c_sharp' },
                 callback = function() vim.treesitter.start() end
             })
         end
@@ -462,8 +463,8 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
-        dir = "/home/ivan/Projects/swimd",
-        dev = true,
+        -- dir = "/home/ivan/Projects/swimd",
+        -- dev = true,
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('swimd-lua').setup();
