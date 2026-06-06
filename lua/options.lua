@@ -85,7 +85,6 @@ vim.keymap.set('n', '<Leader>el', ':%lua<CR>')
 
 vim.keymap.set('n', '<Leader>gl', ':diffget \\2<CR>')
 vim.keymap.set('n', '<Leader>gr', ':diffget \\3<CR>')
-
 vim.keymap.set('n', '<Leader>f\\', 'V:s`\\\\`/`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>f/', 'V:s`/`\\\\`g<CR>:noh<CR>')
 vim.keymap.set('n', '<Leader>dc', 'mmv"dyV:s`<C-r>d`<C-r>d<C-r>d`g<CR>:noh<CR>`m')
@@ -124,7 +123,7 @@ simple_select.register('n',
 
 vim.opt.grepprg = "rg --vimgrep"
 vim.keymap.set('n', '<Leader>gw', function()
-    local cmd = 'gr \\b' .. vim.fn.expand('<cword>') .. '\\b'
+    local cmd = 'gr "\\b' .. vim.fn.expand('<cword>') .. '\\b"'
     if grep_target.val ~= "" then
         cmd = cmd .. " ".. grep_target.val
     end
@@ -162,6 +161,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
       end
   end,
 })
+vim.keymap.set('n', '<F5>', ':!make run<CR>')
 
 vim.g.spelunker_disable_auto_group = 0
 vim.api.nvim_create_augroup("spelunker", { clear = true })
@@ -181,6 +181,13 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'none' })
 vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#272d33'})
+
+vim.api.nvim_create_user_command("PrintMessages", function()
+    vim.cmd("put =execute('messages')");
+end, {})
+vim.api.nvim_create_user_command("BufName", function()
+    vim.cmd("let @+ = expand('%')");
+end, {})
 
 vim.api.nvim_create_user_command("FixShada", function()
     local data_dir = vim.fn.stdpath("data")
