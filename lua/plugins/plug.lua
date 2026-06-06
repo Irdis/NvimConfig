@@ -102,9 +102,6 @@ return
         "Irdis/NoogleNvim",
         -- dir = "C:\\Projects\\NoogleNvim\\",
         -- dev = true,
-        build = function ()
-            require("noogle").build()
-        end,
         config = function()
             local paths = {}
             local dotnet_folder = "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App"
