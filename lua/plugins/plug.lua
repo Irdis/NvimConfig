@@ -157,11 +157,15 @@ return
             if at_work then
                 connection_strings = {
                     { text = "local", val = "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120" },
+
+                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB-DB09\\DB05 qa02-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB-DB09\\DB06 qa06-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB94-WAD1", val = "Data Source=LAB94-WAD1;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls123", val = "Data Source=rls123;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
-                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB-DB09\\DB05 qa02-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "rls261", val = "Data Source=rls261;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                 }
             else
                 connection_strings = {
@@ -389,6 +393,11 @@ return
         lazy = false,
         opts = {
             picker = { enabled = true },
+            bigfile = {
+                enabled = true,
+                size = 1.5 * 1024 * 1024, -- 1.5MB
+                line_length = 1000, -- average line length (catches minified files)
+            },
         },
         keys = {
             { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
