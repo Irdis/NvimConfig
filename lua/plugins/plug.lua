@@ -103,9 +103,6 @@ return
         -- dir = "C:\\Repo\\NoogleNvim\\",
         -- dir = "/home/ivan/Projects/NoogleNvim",
         -- dev = true,
-        build = function ()
-            require("noogle").build()
-        end,
         config = function()
             local paths = {}
             local dotnet_folder
@@ -338,12 +335,6 @@ return
         branch = "main",
         lazy = false,
         build = ':TSUpdate',
-        config = function()
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = { 'lua', 'cs', 'noogle', 'typescript', 'javascript', 'c', 'c_sharp' },
-                callback = function() vim.treesitter.start() end
-            })
-        end
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",

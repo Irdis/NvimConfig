@@ -194,6 +194,10 @@ vim.api.nvim_create_user_command("FixShada", function()
     vim.cmd("!rmrf -p " .. data_dir .. "\\shada -ascii -na");
 end, {})
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'lua', 'cs', 'typescript', 'javascript', 'noogle', 'c' },
+    callback = function() vim.treesitter.start() end
+})
 vim.filetype.add({
     extension = {
         resx = "xml"
