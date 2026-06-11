@@ -73,6 +73,7 @@ return
     {
         "Irdis/NuNvim",
         -- dir = "C:\\Repo\\NuNvim\\",
+        -- dir = "/home/ivan/Projects/NuNvim",
         -- dev = true,
         config = function()
             local config = {};
@@ -80,11 +81,11 @@ return
 
             if current_path == const.ht_main or current_path == const.ht_white then
                 config.nunitconsole = const.nunit_net46;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
-            else
+            elseif not is_linux then
                 config.nunitconsole = const.nunit_net6;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             end
+
+            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true, run_outside = true })<CR>')
 
             require("nunvim").setup(config)
