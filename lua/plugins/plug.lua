@@ -230,6 +230,28 @@ return
                             vim.fn.setreg("+", rel_path)
                         end,
                     },
+                    ['<Leader>o'] = {
+                        desc = 'Open file',
+                        callback = function ()
+                            local oil = require("oil")
+                            local entry = oil.get_cursor_entry()
+                            local dir = oil.get_current_dir()
+                            local filepath = dir .. entry.name
+                            if is_linux then
+                                vim.fn.jobstart({ "xdg-open", filepath }, {
+                                    detach = true,
+                                })
+                            else
+                                vim.fn.jobstart({
+                                    "cmd.exe",
+                                    "/c",
+                                    "start",
+                                    "",
+                                    filepath,
+                                }, { detach = true })
+                            end
+                        end,
+                    },
                     ['<Leader>ea'] = {
                         desc = 'Extract archive',
                         callback = function ()
