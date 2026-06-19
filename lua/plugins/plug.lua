@@ -230,7 +230,7 @@ return
                             vim.fn.setreg("+", rel_path)
                         end,
                     },
-                    ['<Leader>o'] = {
+                    ['<Leader><CR>'] = {
                         desc = 'Open file',
                         callback = function ()
                             local oil = require("oil")
