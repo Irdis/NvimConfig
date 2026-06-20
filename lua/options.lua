@@ -69,6 +69,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<Leader>rl', 'i<Up><CR>')
 vim.keymap.set('t', '<M-k>', '<Up>')
 vim.keymap.set('t', '<M-j>', '<Down>')
+vim.keymap.set('n', '<C-i>', '<C-i>', { noremap = true })
 vim.keymap.set('n', '<Leader>rl', 'i<Up><CR><C-\\><C-n>')
 
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
