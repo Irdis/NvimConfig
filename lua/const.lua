@@ -7,11 +7,12 @@ return
     ht_white = "c:\\repo\\hazeltree\\whiteapi",
     ht_build = "c:\\Repo\\hazeltree\\setup\\build.bat",
 
-    ht_rule110 = "C:\\Repo\\Rule110",
 
-    home_rule110 = "C:\\Projects\\Rule110",
-    swimd = "C:\\Projects\\swimd",
+    swimd_win = "C:\\Projects\\swimd",
     swimd_linux = "/home/ivan/Projects/swimd",
+
+    rule110_win = "C:\\Projects\\Rule110",
+    rule110_linux = "/home/ivan/Projects/Rule110",
 
     nuget = "c:\\distr\\nuget.exe",
 }

@@ -1,6 +1,8 @@
 local const = require("const")
-local at_work = require("env").at_work()
-local is_linux = require("env").is_linux()
+local env = require("env")
+local at_work = env.at_work()
+local is_linux = env.is_linux()
+
 return
 {
     {
@@ -77,15 +79,23 @@ return
         -- dev = true,
         config = function()
             local config = {};
-            local current_path = string.lower(vim.fn.getcwd())
+            local current_path = vim.fn.getcwd()
 
-            if current_path == const.ht_main or current_path == const.ht_white then
+            if env.compare_paths(current_path, const.ht_main) or
+                env.compare_paths(current_path, const.ht_white) then
                 config.nunitconsole = const.nunit_net46;
+
             elseif not is_linux then
                 config.nunitconsole = const.nunit_net6;
             end
 
-            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
+            if env.compare_paths(current_path, const.rule110_linux) or
+                env.compare_paths(current_path, const.rule110_win) then
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({})<CR>')
+            else
+                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
+            end
+
             vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true, run_outside = true })<CR>')
 
             require("nunvim").setup(config)
