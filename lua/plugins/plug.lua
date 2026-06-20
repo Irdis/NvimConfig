@@ -89,13 +89,8 @@ return
                 config.nunitconsole = const.nunit_net6;
             end
 
-            if env.compare_paths(current_path, const.rule110_linux) or
-                env.compare_paths(current_path, const.rule110_win) then
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({})<CR>')
-            else
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
-            end
-
+            vim.keymap.set('n', '<Leader>uR', ':lua require("nunvim").run_debug({ run_outside = false })<CR>')
+            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true, run_outside = true })<CR>')
 
             require("nunvim").setup(config)
