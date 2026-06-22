@@ -157,9 +157,10 @@ return
 
                     { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "LAB-DB09\\DB05 qa02-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB-DB09\\DB06 qa06-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB-DB09\\DB06 qa06-wa1", val = "Data Source=LAB-DB09\\DB06;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "LAB94-WAD1", val = "Data Source=LAB94-WAD1;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "rls00", val = "Data Source=rls00;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls123", val = "Data Source=rls123;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls261", val = "Data Source=rls261;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
