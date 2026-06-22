@@ -1,6 +1,8 @@
 local const = require("const")
-local at_work = require("env").at_work()
-local is_linux = require("env").is_linux()
+local env = require("env")
+local at_work = env.at_work()
+local is_linux = env.is_linux()
+
 return
 {
     {
@@ -73,18 +75,22 @@ return
     {
         "Irdis/NuNvim",
         -- dir = "C:\\Repo\\NuNvim\\",
+        -- dir = "/home/ivan/Projects/NuNvim",
         -- dev = true,
         config = function()
             local config = {};
-            local current_path = string.lower(vim.fn.getcwd())
+            local current_path = vim.fn.getcwd()
 
-            if current_path == const.ht_main or current_path == const.ht_white then
+            if env.compare_paths(current_path, const.ht_main) or
+                env.compare_paths(current_path, const.ht_white) then
                 config.nunitconsole = const.nunit_net46;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
-            else
+
+            elseif not is_linux then
                 config.nunitconsole = const.nunit_net6;
-                vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             end
+
+            vim.keymap.set('n', '<Leader>uR', ':lua require("nunvim").run_debug({ run_outside = false })<CR>')
+            vim.keymap.set('n', '<Leader>ur', ':lua require("nunvim").run_debug({ run_outside = true })<CR>')
             vim.keymap.set('n', '<Leader>ua', ':lua require("nunvim").run_debug({ run_all = true, run_outside = true })<CR>')
 
             require("nunvim").setup(config)
@@ -232,6 +238,28 @@ return
                             local rel_path = reg_value:sub(#cwd + 2)
 
                             vim.fn.setreg("+", rel_path)
+                        end,
+                    },
+                    ['<Leader><CR>'] = {
+                        desc = 'Open file',
+                        callback = function ()
+                            local oil = require("oil")
+                            local entry = oil.get_cursor_entry()
+                            local dir = oil.get_current_dir()
+                            local filepath = dir .. entry.name
+                            if is_linux then
+                                vim.fn.jobstart({ "xdg-open", filepath }, {
+                                    detach = true,
+                                })
+                            else
+                                vim.fn.jobstart({
+                                    "cmd.exe",
+                                    "/c",
+                                    "start",
+                                    "",
+                                    filepath,
+                                }, { detach = true })
+                            end
                         end,
                     },
                     ['<Leader>ea'] = {
