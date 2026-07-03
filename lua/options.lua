@@ -69,8 +69,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<Leader>rl', 'i<Up><CR>')
 vim.keymap.set('t', '<M-k>', '<Up>')
 vim.keymap.set('t', '<M-j>', '<Down>')
-vim.keymap.set('n', '<M-o>', '<C-o>', { noremap = true })
-vim.keymap.set('n', '<M-i>', '<C-i>', { noremap = true })
+vim.keymap.set('n', '<M-o>', '<C-i>', { noremap = true })
 vim.keymap.set('n', '<Leader>rl', 'i<Up><CR><C-\\><C-n>')
 
 vim.keymap.set("n", "-", "<Cmd>Oil<CR>")
@@ -171,6 +170,17 @@ vim.api.nvim_create_augroup("spelunker", { clear = true })
 vim.keymap.set('n', '<Leader>sc', function()
     vim.fn["spelunker#check"]()
 end, { noremap = true })
+
+vim.api.nvim_create_augroup("TrimWhitespace", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+    group = "TrimWhitespace",
+    pattern = "*",
+    callback = function()
+        local save = vim.fn.winsaveview()
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.fn.winrestview(save)
+    end,
+})
 
 vim.keymap.set("n", "<Leader>rw", [[:%s/\s\+$//e<CR>]])
 vim.keymap.set("n", "<Leader>ew", function ()
