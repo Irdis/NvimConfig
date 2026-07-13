@@ -104,6 +104,13 @@ vim.keymap.set('n', '<Leader>is', ':set filetype=tsql<CR>iSET ANSI_NULLS, QUOTED
 vim.keymap.set('n', '<Leader>il', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry.<ESC>')
 vim.keymap.set('n', '<Leader>iL', 'iLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<ESC>')
 
+vim.keymap.set('n', '<Leader>yp', function ()
+    vim.fn.setreg("+", vim.fn.expand('%:p'))
+end, { desc = 'Copy filepath to system clipboard' })
+vim.keymap.set('n', '<Leader>rp', function ()
+    vim.fn.setreg("+", vim.fn.expand('%:.'))
+end, { desc = 'Copy relative path to system clipboard' })
+
 vim.keymap.set("n", "<Leader>sd", vim.diagnostic.setqflist)
 vim.diagnostic.config({ virtual_text = true })
 
