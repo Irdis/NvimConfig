@@ -2,6 +2,21 @@ local const = require("const")
 local env = require("env")
 local current_path = vim.fn.getcwd()
 
+local c_folders = {
+    const.swimd_win,
+    const.swimd_linux,
+    '/home/ivan/Projects/swimd_watch'
+}
+
+local function contains(tbl, value)
+    for _, v in ipairs(tbl) do
+        if v == value then
+            return true
+        end
+    end
+    return false
+end
+
 local function normal_make()
     vim.opt.makeprg = 'make'
     if not env.is_linux() then
@@ -61,9 +76,9 @@ elseif env.compare_paths(current_path, const.ht_white) then
 
     vim.opt.makeprg = const.ht_build .. ' ' .. current_target
     vim.opt.errorformat = '%E%f(%l\\,%c): %trror %m,%-G%.%#'
-elseif env.compare_paths(current_path, const.swimd_win) or
-    env.compare_paths(current_path, const.swimd_linux) then
+elseif contains(c_folders, current_path) then
     normal_make()
 else
     normal_dotnet()
 end
+
