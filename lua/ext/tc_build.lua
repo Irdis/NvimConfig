@@ -55,3 +55,13 @@ vim.api.nvim_create_user_command("TcBuild", function(args)
         end
     end)
 end, { nargs = "?", desc = "Trigger TeamCity build for a git tag" })
+
+local function tag_push_and_build(tag)
+    vim.cmd("G tag " .. tag)
+    vim.cmd("G push origin " .. tag)
+    vim.cmd("TcBuild " .. tag)
+end
+
+vim.api.nvim_create_user_command("TagAndBuild", function(args)
+    tag_push_and_build(vim.trim(args.args))
+end, { nargs = 1, desc = "G tag <tag> | G push origin <tag> | TcBuild <tag>" })
