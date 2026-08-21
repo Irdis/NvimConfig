@@ -47,6 +47,14 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.opt.colorcolumn = "120"
 vim.opt.textwidth = 120
 
+-- keep textwidth/colorcolumn as a visual guide only; don't auto-wrap while typing
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function()
+        vim.opt_local.formatoptions:remove({ "t", "c", "a" })
+    end,
+})
+
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
