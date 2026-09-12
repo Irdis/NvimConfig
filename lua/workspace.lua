@@ -22,6 +22,7 @@ local function normal_make()
     if not env.is_linux() then
         vim.opt.errorformat = {
             "%f(%l): %trror %m",
+            "%f(%l): fatal %trror %m",
             "%f(%l): %tarning %m",
             "%f(%l): %ote: %m",
             "%-G%.%#",
