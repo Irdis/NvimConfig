@@ -20,7 +20,12 @@ end
 local function normal_make()
     vim.opt.makeprg = 'make'
     if not env.is_linux() then
-        vim.opt.errorformat = "%f(%l): %trror: %m,%f(%l): %tarning: %m,%f(%l): %ote: %m,%-G%.%#"
+        vim.opt.errorformat = {
+            "%f(%l): %trror %m",
+            "%f(%l): %tarning %m",
+            "%f(%l): %ote: %m",
+            "%-G%.%#",
+        }
     else
         vim.opt.errorformat = "%f:%l:%c: %trror: %m,%f:%l:%c: %tarning: %m,%f:%l:%c: %tote: %m,%-G%.%#"
     end
