@@ -10,7 +10,7 @@ local c_folders = {
 
 local function contains(tbl, value)
     for _, v in ipairs(tbl) do
-        if v == value then
+        if v:lower() == value:lower() then
             return true
         end
     end
