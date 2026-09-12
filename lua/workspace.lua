@@ -25,6 +25,8 @@ local function normal_make()
             "%f(%l): fatal %trror %m",
             "%f(%l): %tarning %m",
             "%f(%l): %ote: %m",
+            "%f : %trror LNK%n: %m",
+            "%f : fatal %trror LNK%n: %m",
             "%-G%.%#",
         }
     else

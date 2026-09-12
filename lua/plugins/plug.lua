@@ -495,6 +495,7 @@ return
         -- dir = "C:\\Projects\\swimd",
         -- dir = "/home/ivan/Projects/swimd",
         -- dev = true,
+        branch = "watch",
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('swimd-lua').setup();
