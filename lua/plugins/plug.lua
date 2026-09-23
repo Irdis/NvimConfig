@@ -479,8 +479,8 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
-        dir = "/home/ivan/Projects/swimd",
-        dev = true,
+        -- dir = "/home/ivan/Projects/swimd",
+        -- dev = true,
         branch = "watch",
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
