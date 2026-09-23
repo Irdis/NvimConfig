@@ -425,20 +425,6 @@ return
         }
     },
     {
-      'dmtrKovalenko/fff.nvim',
-      build = function()
-        require("fff.download").download_or_build_binary()
-      end,
-      opts = {
-          prompt = '',
-          max_threads = 20,
-          preview = {
-              enabled = false,
-          },
-      },
-      lazy = false,
-    },
-    {
         "ibhagwan/fzf-lua",
         opts = {},
         config = function()
@@ -493,8 +479,8 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
-        -- dir = "/home/ivan/Projects/swimd",
-        -- dev = true,
+        dir = "/home/ivan/Projects/swimd",
+        dev = true,
         branch = "watch",
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
