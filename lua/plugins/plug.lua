@@ -481,7 +481,6 @@ return
         -- dir = "C:\\Projects\\swimd",
         -- dir = "/home/ivan/Projects/swimd",
         -- dev = true,
-        branch = "watch",
         dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('swimd-lua').setup();
@@ -489,6 +488,8 @@ return
         keys = {
             { "<Leader>ff", function() require('swimd-lua').open_picker_git() end },
             { "<Leader>fF", function() require('swimd-lua').open_picker_files() end },
+            { "<Leader>fl", function() require('swimd-lua').i_feel_lucky_git(vim.fn.expand('<cword>')) end },
+            { "<Leader>fL", function() require('swimd-lua').i_feel_lucky_files(vim.fn.expand('<cword>')) end },
             { "<Leader>fr", function() require('swimd-lua').refresh() end }
         }
     }
