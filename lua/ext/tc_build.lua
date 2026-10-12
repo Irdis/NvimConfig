@@ -1,12 +1,14 @@
-local BUILD_TYPE = "Cloud_CloudCollateralApiNetCore"
-local TC_BASE    = "https://tc.hazeltree.com"
+local BUILD_TYPE  = "Cloud_CloudCollateralApiNetCore"
+local DEPLOY_TYPE = "Cloud_Tms_CloudBuildDeployV125"
+local TC_BASE     = "https://tc.hazeltree.com"
 
-local function trigger(tag)
+local DEPLOYS = {
+    { name = "qa10", branch = "feature/red/55781-acadia-subs-vol2", lab = "QA10-WA1" },
+}
+
+local function queue(payload, what)
     local token = vim.env.TC_TOKEN
-    local body = vim.fn.json_encode({
-        buildType  = { id = BUILD_TYPE },
-        branchName = "refs/tags/" .. tag,
-    })
+    local body = vim.fn.json_encode(payload)
 
     local cmd = {
         "curl", "-sS", "-X", "POST",
@@ -17,7 +19,7 @@ local function trigger(tag)
         "-d", body,
     }
 
-    vim.notify("Triggering build for tag: " .. tag .. " …")
+    vim.notify("Triggering " .. what .. " …")
 
     vim.system(cmd, { text = true }, function(result)
         vim.schedule(function()
@@ -34,13 +36,28 @@ local function trigger(tag)
 
             local build_id  = decoded.id
             local state     = decoded.state or "?"
-            local href      = TC_BASE .. (decoded.href or "")
+            local href      = decoded.webUrl or (TC_BASE .. (decoded.href or ""))
             vim.notify(
                 string.format("Build #%s queued  state=%s\n%s", build_id, state, href),
                 vim.log.levels.INFO
             )
         end)
     end)
+end
+
+local function trigger(tag)
+    queue({
+        buildType  = { id = BUILD_TYPE },
+        branchName = "refs/tags/" .. tag,
+    }, "build for tag: " .. tag)
+end
+
+local function run_deploy(branch, lab)
+    queue({
+        buildType  = { id = DEPLOY_TYPE },
+        branchName = branch,
+        properties = { property = { { name = "FullServerName", value = lab } } },
+    }, "deploy of " .. branch .. " to " .. lab)
 end
 
 vim.api.nvim_create_user_command("TcBuild", function(args)
@@ -65,3 +82,19 @@ end
 vim.api.nvim_create_user_command("TagAndBuild", function(args)
     tag_push_and_build(vim.trim(args.args))
 end, { nargs = 1, desc = "G tag <tag> | G push origin <tag> | TcBuild <tag>" })
+
+vim.api.nvim_create_user_command("RunDeploy", function(args)
+    if #args.fargs ~= 2 then
+        vim.notify("Usage: RunDeploy <branch> <lab>", vim.log.levels.ERROR)
+        return
+    end
+    run_deploy(args.fargs[1], args.fargs[2])
+end, { nargs = "+", desc = "Trigger TeamCity CloudBuildDeploy for <branch> on <lab>" })
+
+require("ext/simple_select").register("n",
+    "<Leader>ds",
+    "Deploy",
+    DEPLOYS,
+    function() return nil end,
+    function(d) return string.format("%s - lab:%s, branch:%s", d.name, d.lab, d.branch) end,
+    function(d) run_deploy(d.branch, d.lab) end)
