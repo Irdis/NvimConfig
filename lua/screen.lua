@@ -68,9 +68,63 @@ then
     }
   }
 
+  -- equalizer above the logo for the doom start; lua/doom_eq.lua holds bar levels analysed from the track
+  local eq_data = vim.g.doom and require('doom_eq')
+  local eq_parts = { '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█' }
+  local eq_rows = 5
+  local eq_bands = 20
+
+  -- levels is a frame from doom_eq (one char per bar), nil draws the flat baseline
+  local function render_eq(levels)
+    local rows = {}
+    for r = 1, eq_rows do
+      local cells = {}
+      for b = 1, eq_bands do
+        local level = levels and levels:byte(b) - 48 or 0
+        local fill = math.max(level, r == eq_rows and 1 or 0) - (eq_rows - r) * #eq_parts
+        cells[b] = fill <= 0 and ' ' or eq_parts[math.min(fill, #eq_parts)]
+      end
+      rows[r] = table.concat(cells, ' ')
+    end
+    return rows
+  end
+
+  local equalizer = eq_data and {
+    type = "text",
+    val = render_eq(),
+    opts = {
+      position = "center",
+      hl       = "Error"
+    }
+  }
+
   local uv = vim.uv or vim.loop
   local timer
   local frame = 1
+  local eq_timer
+
+  local function stop_eq()
+    if eq_timer then
+      eq_timer:stop()
+      eq_timer:close()
+      eq_timer = nil
+    end
+  end
+
+  -- picks the frame by time since the track started, so the bars can't drift from the music
+  local function start_eq()
+    stop_eq()
+    if not equalizer then return end
+    local started = uv.hrtime()
+    eq_timer = uv.new_timer()
+    eq_timer:start(0, math.floor(1000 / eq_data.fps), vim.schedule_wrap(function()
+      if not eq_timer then return end
+      local levels = eq_data.frames[math.floor((uv.hrtime() - started) / 1e9 * eq_data.fps) + 1]
+      if not levels then stop_eq() end
+      equalizer.val = render_eq(levels)
+      pcall(function() require('alpha').redraw() end)
+    end))
+  end
 
   local function stop_timer()
     if timer then
@@ -175,8 +229,9 @@ done
       env = env,
       on_stdout = function(_, data)
         for _, line in ipairs(data) do
-          -- the logo waits 9 seconds into the last track before it starts moving
+          -- the equalizer follows the last track, the logo waits 9 seconds into it before it starts moving
           if vim.trim(line) == tostring(#tracks) then
+            start_eq()
             start_timer(9000)
           end
         end
@@ -203,6 +258,7 @@ done
     pattern = "AlphaClosed",
     callback = function()
       stop_timer()
+      stop_eq()
       stop_music()
     end,
   })
@@ -228,7 +284,7 @@ done
   }
 
   local ol = { -- occupied lines
-    icon            = #header.val,
+    icon            = #header.val + (equalizer and #equalizer.val + 1 or 0),
     message         = #footer.val,
     length_buttons  = 0,
     neovim_lines    = 2,
@@ -254,6 +310,11 @@ done
         margin = 5
       },
     }
+
+    if equalizer then
+      table.insert(options.layout, 2, equalizer)
+      table.insert(options.layout, 3, { type = "padding", val = 1 })
+    end
 
   end
 end
