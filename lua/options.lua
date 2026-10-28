@@ -4,7 +4,7 @@ vim.opt.number = true
 vim.opt.history = 200
 vim.opt.wildmenu = true
 vim.opt.wildmode = "full"
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus,unnamed"
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
