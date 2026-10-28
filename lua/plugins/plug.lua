@@ -160,12 +160,8 @@ return
             if at_work then
                 connection_strings = {
                     { text = "local", val = "Data Source=(local);Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=120" },
-
-                    { text = "LAB-DB09\\DB02 qa15-wa1", val = "Data Source=LAB-DB09\\DB02;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB-DB09\\DB05 qa02-wa1", val = "Data Source=LAB-DB09\\DB05;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB-DB09\\DB06 qa01-wa1", val = "Data Source=LAB-DB09\\DB06;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB-DB09\\DB07 qa21-wa1", val = "Data Source=LAB-DB09\\DB07;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
-                    { text = "LAB94-WAD1", val = "Data Source=LAB94-WAD1;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB-DB09\\DB06 qa10-wa1", val = "Data Source=LAB-DB09\\DB06;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
+                    { text = "LAB41-WAD1", val = "Data Source=LAB41-WAD1;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "local\\s19", val = "Data Source=(local)\\s19;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True;Command Timeout=1200" },
                     { text = "rls00", val = "Data Source=rls00;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
                     { text = "rls12", val = "Data Source=rls12;Initial Catalog=AtlasCore;Integrated Security=SSPI;TrustServerCertificate=True" },
@@ -479,6 +475,7 @@ return
     {
         "Irdis/swimd",
         -- dir = "C:\\Projects\\swimd",
+        -- dir = "C:\\Repo\\swimd",
         -- dir = "/home/ivan/Projects/swimd",
         -- dev = true,
         dependencies = 'kyazdani42/nvim-web-devicons',
